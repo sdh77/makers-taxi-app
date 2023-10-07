@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+
+import styles from "../CSS/styles.css";
+
 function FirstPage() {
   return (
     <div className="firstPage">
@@ -8,8 +12,12 @@ function FirstPage() {
         ></img>
       </div>
       <div className="firstPage_btn">
-        <button className="firstPage_btn__logIn">LogIn</button>
-        <button className="firstPage_btn__singUp">SingUp</button>
+        <Link to={"/login"}>
+          <button className="firstPage_btn__logIn">LogIn</button>
+        </Link>
+        <Link to={"/singUp"}>
+          <button className="firstPage_btn__singUp">SingUp</button>
+        </Link>
       </div>
     </div>
   );

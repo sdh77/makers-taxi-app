@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import FirstPage from "./FirstPage";
-import styles from "./FirstPage.css";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<FirstPage />);
-
+root.render(<App />);
