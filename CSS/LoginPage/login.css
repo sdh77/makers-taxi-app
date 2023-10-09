@@ -6,3 +6,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.loginForm div input {
+  width: 60vw;
+  height: 6vh;
+  font-size: 4vh;
+  margin: 10px;
+}
+
+.loginForm .loginForm_loginBtn {
+  border: none;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  font-size: 5vh;
+  padding: 10px;
+}

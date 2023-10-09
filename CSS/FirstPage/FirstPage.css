@@ -1,5 +1,3 @@
-@import "reset.css";
-
 .firstPage {
   width: 100vw;
   height: 100vh;
@@ -26,6 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .firstPage_btn * {
@@ -36,4 +35,5 @@
   margin-bottom: 10px;
   border-radius: 10px;
   font-size: 3vh;
+  border: none;
 }
