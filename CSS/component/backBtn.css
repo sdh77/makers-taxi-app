@@ -1,0 +1,12 @@
+.backbtn {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+.backbtn * {
+  border: none;
+  font-size: 6vh;
+  background-color: transparent;
+}
