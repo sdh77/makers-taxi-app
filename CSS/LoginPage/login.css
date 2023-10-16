@@ -41,8 +41,13 @@
   width: 3vw;
   height: 3vw;
 }
-
-.loginForm .loginForm_extraBtns {
+.loginForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loginForm form .loginForm_extraBtns {
   /* margin-top: 10px; */
 }
 .loginForm .loginForm_extraBtns a {
