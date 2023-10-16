@@ -7,11 +7,12 @@ $nickname = $_GET['nickname'];
 $phone = $_GET['phone'];
 $loginid = $_GET['loginid'];
 $loginpwd = $_GET['loginpwd'];
-$sql = "INSERT INTO taxi_userinfo(id, name, pwd, pwd, student_ID, account, nickname, phonenumber)
-VALUES ('".$id."', '".$name."','".$pwd."','".$student_ID."','".$account."','".$nickname."',".$phonenumber.")"
+$sql = "INSERT INTO taxi_userinfo(id, name, pwd, student_ID, account, nickname, phonenumber)
+VALUES ('".$loginid."', '".$name."','".$loginpwd."','".$id."','".$account."','".$nickname."',".$phone.")";
 echo $sql; 
 
 pg_query($conn, $sql);
 pg_close($conn);
+
 
 ?>
