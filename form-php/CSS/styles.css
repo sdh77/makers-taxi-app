@@ -6,5 +6,7 @@
 
 @import "SignUp/signUp.css";
 
+@import "mainPage/mainPage.css";
+
 @import "component/rowColumn.css";
 @import "component/backBtn.css";

@@ -1,3 +1,14 @@
+.loadingScreen {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: antiquewhite;
+}
+.hide {
+  visibility: hidden;
+  z-index: -1;
+}
+
 .firstPage {
   width: 100vw;
   height: 100vh;

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <div class="loadingScreen"></div>
   <div class="firstPage">
     <div class="firstPage_img">
       <img class="logo" src="https://pimg.designhouse.co.kr/cms/contents/direct/info_id/45267/1220841607201.jpg"></img>
@@ -18,7 +19,18 @@
       <a href="signUp.html"><button>Join</button></a>
     </div>
   </div>
+  <script>
+    const hide = document.location.href.split("?");
+    console.log(hide);
+    function hideAction() {
+      document.querySelector(".loadingScreen").classList.add("hide");
+    }
+    if (hide[1] == "yes") {
+      hideAction();
+    }
+    setTimeout(hideAction, 2000);
 
+  </script>
 </body>
 
 </html>

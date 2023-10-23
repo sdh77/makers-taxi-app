@@ -12,7 +12,7 @@
 <body>
   <div class="loginForm">
     <div class="loginForm_input">
-      <a class="backbtn" href="index.html">
+      <a class="backbtn" href="index.html?yes">
         <button class="">
           <p class="backbtn_point">‹</p>
         </button>
@@ -20,15 +20,17 @@
       <form action="PHP/checklogin.php" method="post">
         <div class="row">
           <!-- <p>👤</p> -->
-          <input type="text" placeholder="ID" name="id"></input>
+          <input class="inputId" type="text" placeholder="ID" name="id"></input>
         </div>
         <div class="row">
           <!-- <p>🔐</p> -->
-          <input type="password" placeholder="password" name="pwd"></input>
+          <input class="inputpwd" type="password" placeholder="password" name="pwd"></input>
         </div>
         <div class="row loginForm_autocheck">
-          <input class="loginForm_autocheck__check" type="checkbox" />
-          <p>로그인 상태 유지</p>
+          <input class="loginForm_autocheck__check" type="checkbox" id="check" />
+          <label for="check">
+            <p>로그인 상태 유지</p>
+          </label>
         </div>
         <button class="loginForm_loginBtn" type="submit">로그인</button>
       </form>
@@ -39,6 +41,7 @@
       <a href="signUp.html"><button>회원가입</button></a>
     </div>
   </div>
+  <script src="JS/defalutLogin.js"></script>
 </body>
 
 </html>
