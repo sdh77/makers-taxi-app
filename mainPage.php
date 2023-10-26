@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION["id"])){
+echo'<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +14,6 @@
 
 <body>
   <div class="main-top"></div>
-
   <div class="main-middle"></div>
   <div class="main-bottom">
     <div>
@@ -35,4 +37,9 @@
   <script src="JS/mainPage.js"></script>
 </body>
 
-</html>
+</html>';
+}
+else{
+  echo"로그인을 해주세요";
+}
+?>

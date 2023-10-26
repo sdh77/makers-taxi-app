@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz password=taxi')
   or die('Could not connect: ' . pg_last_error());
 
@@ -11,10 +12,10 @@ if ($result) {
   if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_assoc($result)) {
       if ($row['pwd'] == $pwd) {
-        // echo "로그인 완료";
+        $_SESSION["id"] = $row["id"];
         echo "
         <script type='text/javascript'>
-        window.location.href = '../mainPage.html';
+        window.location.href = '../mainPage.php';
         </script>";
 
       } else {
