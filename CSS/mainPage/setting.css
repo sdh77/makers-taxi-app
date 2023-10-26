@@ -1,0 +1,30 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile__column {
+  display: flex;
+  flex-direction: row;
+  padding: 1vh;
+}
+
+.profile__column img {
+  border-radius: 15px;
+  width: 16vw;
+  height: 8vh;
+}
+
+.profile {
+  align-items: center;
+}
+
+.profile h2 {
+  margin-left: 2vw;
+}
+
+.icon {
+  margin-right: 1vw;
+}

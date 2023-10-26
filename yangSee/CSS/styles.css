@@ -1,5 +1,7 @@
 @import "reset.css";
 
+@import "Main/setting.css";
+
 @import "FirstPage/FirstPage.css";
 
 @import "LoginPage/login.css";

@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap'); */
+
 @import "reset.css";
 
 @import "FirstPage/FirstPage.css";
@@ -7,6 +9,11 @@
 @import "SignUp/signUp.css";
 
 @import "mainPage/mainPage.css";
+@import "mainPage/setting.css";
 
 @import "component/rowColumn.css";
 @import "component/backBtn.css";
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
