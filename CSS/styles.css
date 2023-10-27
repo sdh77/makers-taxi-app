@@ -10,6 +10,7 @@
 
 @import "mainPage/mainPage.css";
 @import "mainPage/setting.css";
+@import "mainPage/friends.css";
 
 @import "component/rowColumn.css";
 @import "component/backBtn.css";

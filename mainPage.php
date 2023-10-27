@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["id"])){
-echo'<!DOCTYPE html>
+if (isset($_SESSION["id"])) {
+  echo '<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +13,7 @@ echo'<!DOCTYPE html>
 </head>
 
 <body>
-  <div class="main-top"></div>
+  <div class="main-top"><p>Friends</p></div>
   <div class="main-middle"></div>
   <div class="main-bottom">
     <div>
@@ -38,8 +38,7 @@ echo'<!DOCTYPE html>
 </body>
 
 </html>';
-}
-else{
-  echo"로그인을 해주세요";
+} else {
+  echo "로그인을 해주세요";
 }
 ?>

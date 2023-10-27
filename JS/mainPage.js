@@ -3,6 +3,7 @@ const chatRoom = document.querySelector(".chatroom");
 const setting = document.querySelector(".setting");
 
 const main_middle = document.querySelector(".main-middle");
+const main_top = document.querySelector(".main-top p");
 
 showSetting();
 
@@ -12,6 +13,7 @@ function showFriends() {
   $.ajax({ url: "PHP/friends.php", type: "post" }).done(function (data) {
     main_middle.innerHTML = data;
   });
+  main_top.innerHTML = "Friend";
 }
 
 function showChatRoom() {
@@ -20,6 +22,7 @@ function showChatRoom() {
   $.ajax({ url: "PHP/chatRoom.php", type: "post" }).done(function (data) {
     main_middle.innerHTML = data;
   });
+  main_top.innerHTML = "Chats";
 }
 
 function showSetting() {
@@ -28,6 +31,7 @@ function showSetting() {
   $.ajax({ url: "PHP/setting.php", type: "post" }).done(function (data) {
     main_middle.innerHTML = data;
   });
+  main_top.innerHTML = "Seatings";
 }
 
 friends.addEventListener("click", showFriends);
