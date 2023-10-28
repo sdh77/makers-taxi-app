@@ -1,6 +1,7 @@
 <?php
 session_start();
-echo '<div class="profile">
+echo '<div class="main-top"><p>Setting</p></div>';
+echo '<div class="main-middle"><div class="profile">
         <div class="profile__column profile">';
 if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
   echo '<img src="PROFILE/' . $_SESSION['id'] . '.jpeg"/>';
@@ -13,5 +14,6 @@ echo '<h2>' . $_SESSION["id"] . '</h2>
           <span class="icon">❤️‍🔥</span>
           <span>9999!! </span>
         </div>
-      </div>'
-  ?>
+      </div>';
+echo '</div>';
+?>

@@ -4,6 +4,8 @@ $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz passw
   or die('Could not connect: ' . pg_last_error());
 $sql = "select nickname from taxi_userinfo where id = '" . $_SESSION["id"] . "'";
 $result = pg_query($conn, $sql);
+echo '<div class="main-top"><p>Friends</p><div class="functionBtn">여기에 추가하면...</div></div>';
+echo '<div class="main-middle">';
 if ($result) {
   if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_assoc($result)) {
@@ -12,7 +14,7 @@ if ($result) {
       if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
         echo '<img src="PROFILE/' . $_SESSION['id'] . '.jpeg"/>';
       } else {
-        echo '<img src="PROFILE/image.jpeg"/>';
+        echo '<img src="PROFILE/default.jpeg"/>';
       }
       echo '<div class="nickName">' . $row["nickname"] . '</div>
         </div>';
@@ -27,16 +29,15 @@ if ($SearchFriendResult) {
   if (pg_num_rows($SearchFriendResult) > 0) {
     while ($row = pg_fetch_assoc($SearchFriendResult)) {
       echo '<div class="profile__column friendsProfile">';
-      if (file_exists(('../PROFILE/' . $row["friendid"] . '.jpeg'))) {
-        echo '<img src="PROFILE/' . $row["friendid"] . '.jpeg"/>';
+      if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg'))) {
+        echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg"/>';
       } else {
-        echo '<img src="PROFILE/image.jpeg"/>';
+        echo '<img src="PROFILE/default.jpeg"/>';
       }
       echo '<div class="nickName">' . $row["friendid"] . '</div>
         </div>';
     }
   }
 }
-
+echo '</div>';
 ?>
-<img src="" alt="">

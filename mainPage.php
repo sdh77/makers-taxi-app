@@ -13,8 +13,7 @@ if (isset($_SESSION["id"])) {
 </head>
 
 <body>
-  <div class="main-top"><p>Friends</p></div>
-  <div class="main-middle"></div>
+  <div class="main-topMiddle"></div>
   <div class="main-bottom">
     <div>
       <button class="friends">
