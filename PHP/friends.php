@@ -4,7 +4,13 @@ $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz passw
   or die('Could not connect: ' . pg_last_error());
 $sql = "select nickname from taxi_userinfo where id = '" . $_SESSION["id"] . "'";
 $result = pg_query($conn, $sql);
-echo '<div class="main-top"><p>Friends</p><div class="functionBtn">여기에 추가하면...</div></div>';
+echo '<div class="main-top">
+        <p>Friends</p>
+        <div class="functionBtn">
+          <i class="fa-solid fa-plus"></i>
+          <i class="fa-regular fa-bell"></i>
+        </div>
+      </div>';
 echo '<div class="main-middle">';
 if ($result) {
   if (pg_num_rows($result) > 0) {
