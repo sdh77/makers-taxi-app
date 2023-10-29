@@ -9,7 +9,6 @@ if (isset($_SESSION["id"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>기능 화면</title>
   <link rel="stylesheet" href="CSS/styles.css" />
-
 </head>
 
 <body>
@@ -31,9 +30,17 @@ if (isset($_SESSION["id"])) {
       </button>
     </div>
   </div>
+
+  <div id="modalWrap">
+    <div id="modalContent">
+      <div id="modalBody">
+      </div>
+    </div>
+  </div>
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="JS/mainPage.js"></script>
+  
 </body>
 
 </html>';

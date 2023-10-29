@@ -1,3 +1,13 @@
+.main-top .functionBtn {
+  padding-right: 10px;
+}
+.main-top .functionBtn button {
+  border: none;
+  background-color: transparent;
+}
+.main-top .functionBtn button i {
+  font-size: 3vh;
+}
 .friendsProfile {
   display: flex;
   flex-direction: row;
@@ -6,9 +16,4 @@
 
 .friendsProfile .nickName {
   margin-left: 10px;
-}
-
-.main-top {
-  display: flex;
-  justify-content: space-between;
 }

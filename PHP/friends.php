@@ -7,8 +7,8 @@ $result = pg_query($conn, $sql);
 echo '<div class="main-top">
         <p>Friends</p>
         <div class="functionBtn">
-          <i class="fa-solid fa-plus"></i>
-          <i class="fa-regular fa-bell"></i>
+          <button class="functionBtn_bell"><i class="fa-regular fa-bell"></i></button>
+          <button class="functionBtn_plus"><i class="fa-solid fa-plus"></i></button>
         </div>
       </div>';
 echo '<div class="main-middle">';
@@ -46,4 +46,5 @@ if ($SearchFriendResult) {
   }
 }
 echo '</div>';
+
 ?>

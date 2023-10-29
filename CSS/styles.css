@@ -14,7 +14,8 @@
 
 @import "component/rowColumn.css";
 @import "component/backBtn.css";
-
+@import "component/topMiddleArea.css";
+@import "component/popup.css";
 body {
   font-family: "Open Sans", sans-serif;
 }
