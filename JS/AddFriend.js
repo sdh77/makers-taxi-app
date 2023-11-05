@@ -1,15 +1,9 @@
 const my_id = document.querySelector(".my-id").innerHTML;
 
 function BellList() {
-  dellFriendForm.style.display = "block";
+  bellFriendForm.style.display = "block";
   console.log("bell");
-  $.ajax({ url: "PHP/dellFriendList.php", type: "post" }).done(function (data) {
-    bellFriendMainText.innerHTML = data;
-    const friendAddBtns = document.querySelectorAll(".bellFriend-add__btn");
-    friendAddBtns.forEach((friendAddBtn) =>
-      friendAddBtn.addEventListener("click", allowFriend)
-    );
-  });
+  updateBellList();
 }
 
 function allowFriend(event) {
@@ -44,14 +38,12 @@ function AddFriend(event) {
   }
 }
 
-function updateFriendList() {
-  $.ajax({ url: "PHP/friends.php", type: "post" }).done(function (data) {
-    main_topMiddle.innerHTML = data;
-  });
-}
-
 function updateBellList() {
-  $.ajax({ url: "PHP/dellFriendList.php", type: "post" }).done(function (data) {
+  $.ajax({ url: "PHP/bellFriendList.php", type: "post" }).done(function (data) {
     bellFriendMainText.innerHTML = data;
+    const friendAddBtns = document.querySelectorAll(".bellFriend-add__btn");
+    friendAddBtns.forEach((friendAddBtn) =>
+      friendAddBtn.addEventListener("click", allowFriend)
+    );
   });
 }

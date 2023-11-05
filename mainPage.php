@@ -49,10 +49,10 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
-  <div id="dellFriendForm" class="popup">
+  <div id="bellFriendForm" class="popup">
     <div id="modalContent">
-      <div id="dellFriendBody">
-        <div class="dellFriend">
+      <div id="bellFriendBody">
+        <div class="bellFriend">
         
         </div>
       </div>

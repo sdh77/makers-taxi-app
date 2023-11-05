@@ -40,7 +40,6 @@ if ($friendName != "") {
 
   //친구신청을 통해 이미 친구인지 확인
   $searchFriendAllow = "select * from friend where friendcheck = true and id = '" . $friendId . "'";
-  echo "" . $searchFriendAllow . "";
   $FriendAllowList = pg_query($conn, $searchFriendAllow);
   $findAllow = 0;
   if ($FriendAllowList) {
@@ -56,13 +55,34 @@ if ($friendName != "") {
   if($friendId == $myId){
     $duplicationId = 1;
   }
+ 
+  //만약 서로 친구추가를 했을 경우 마지막에 추가한 사람이 friendcheck를 true로 바꾼다.
+  $searchDuplicationAdd = "select * from friend where friendcheck = false and id = '" . $friendId . "'";
+  $checkDuplication = pg_query($conn, $searchDuplicationAdd);
+  $duplicationActionDo = 0;
+  if ($checkDuplication) {
+    if (pg_num_rows($checkDuplication) > 0) {
+      while ($row = pg_fetch_assoc($checkDuplication)) {
+        $duplicationActionDo++;
+      }
+    }
+  }
+  
   echo $findId;
   echo $findIt;
   echo $findAllow;
   echo $duplicationId;
+  echo $duplicationActionDo;
   $addSql = "insert into friend(id,friendId) values('" . $myId . "','" . $friendId . "')";
-  if ($findId != 0 && $findIt == 0 && $findAllow == 0 && $duplicationId == 0) {
+  if ($findId != 0 && $findIt == 0 && $findAllow == 0 && $duplicationId == 0 && $duplicationActionDo == 0) {
     pg_query($conn, $addSql);
+  }
+  else if($duplicationActionDo != 0){
+    $duplicationAdd = "update friend set friendcheck = true 
+    from (select * from friend where friendcheck = false and id = '" . $friendId . "') as friendId
+    where friendId.friendid = friend.friendid and friendId.id = friend.id";
+    echo $duplicationAdd;
+    pg_query($conn, $duplicationAdd);  
   }
 }
 pg_close($conn);

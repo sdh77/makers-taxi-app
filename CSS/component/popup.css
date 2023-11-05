@@ -15,7 +15,7 @@
   background-color: #fff;
 }
 
-.dellFriend,
+.bellFriend,
 .plusFriend {
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
   height: 10vh;
 }
 
-#dellFriendBody {
+#bellFriendBody {
   width: 100%;
   height: 90vh;
   border: none;
