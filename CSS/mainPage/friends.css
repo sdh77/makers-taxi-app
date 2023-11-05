@@ -4,6 +4,7 @@
 .main-top .functionBtn button {
   border: none;
   background-color: transparent;
+  font-size: 4vh;
 }
 .main-top .functionBtn button i {
   font-size: 3vh;

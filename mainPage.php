@@ -31,15 +31,43 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
-  <div id="modalWrap">
+  <div id="addFriendForm" class="popup">
     <div id="modalContent">
-      <div id="modalBody">
+      <div id="addFriendBody">
+        <div class="plusFriend">
+          <div class="popupHeader">add</div>
+          <form class="plusFriend-row">
+            <input class="plusFriend-id" type="text" placeholder="친구의 아이디를 입력하시오" name="friendId"/>
+            <button class="submitAddFriend" type="submit" onclick="AddFriend(event)">검색</button>
+          </form>
+          <div class="plusFriend-row">
+            <div>나의 아이디</div>
+            <div class="my-id">' . $_SESSION['id'] . '</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div id="dellFriendForm" class="popup">
+    <div id="modalContent">
+      <div id="dellFriendBody">
+        <div class="dellFriend">
+        
+        </div>
+      </div>
+    </div>
+    <div class="closeUp">
+      <img src="IMG/위쪽.png" alt="닫기"></img>
+    </div>
+  </div>
+</div>
+
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="JS/mainPage.js"></script>
+  <script src="JS/AddFriend.js"></script>
+  <script src="JS/bellFriend.js"></script>
   
 </body>
 

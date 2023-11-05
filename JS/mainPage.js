@@ -1,14 +1,18 @@
 const friends = document.querySelector(".friends");
 const chatRoom = document.querySelector(".chatroom");
 const setting = document.querySelector(".setting");
-const modal = document.getElementById("modalWrap");
-const modalHtml = document.getElementById("modalBody");
-
+const addFriendForm = document.getElementById("addFriendForm");
+const addFriendFormInputText = document.querySelector(".plusFriend-id");
+const dellFriendForm = document.getElementById("dellFriendForm");
+const dellFormClose = document.querySelector(".closeUp");
+const dellFormCloseImg = document.querySelector(".closeUp img");
+const bellFriendMainText = document.querySelector(".dellFriend");
 const main_topMiddle = document.querySelector(".main-topMiddle");
 
 // showSetting();
 showFriends();
-modal.style.display = "none";
+addFriendForm.style.display = "none";
+dellFriendForm.style.display = "none";
 
 function showFriends() {
   // main_middle.innerHTML = "친구창";
@@ -18,7 +22,7 @@ function showFriends() {
     dellBtn = document.querySelector(".functionBtn_bell");
     plusBtn = document.querySelector(".functionBtn_plus");
 
-    dellBtn.addEventListener("click", alertList);
+    dellBtn.addEventListener("click", BellList);
     plusBtn.addEventListener("click", friendPlus);
   });
 }
@@ -35,29 +39,20 @@ function showSetting() {
   });
 }
 
-function alertList() {
-  modal.style.display = "block";
-
-  console.log("bell");
-}
-
 function friendPlus() {
-  modal.style.display = "block";
-  $.ajax({ url: "PHP/plusFriendShow.php", type: "post" }).done(function (data) {
-    modalHtml.innerHTML = data;
-  });
+  addFriendForm.style.display = "block";
+  addFriendFormInputText.focus();
 }
 window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == addFriendForm) {
+    addFriendForm.style.display = "none";
+  } else if (
+    event.target == dellFormClose ||
+    event.target == dellFormCloseImg
+  ) {
+    dellFriendForm.style.display = "none";
   }
 };
-
-function NoAction(event) {
-  event.preventDefault();
-  const plusFriendId = document.querySelector(".plusFriend-id").value;
-  console.log(plusFriendBtn);
-}
 
 friends.addEventListener("click", showFriends);
 chatRoom.addEventListener("click", showChatRoom);

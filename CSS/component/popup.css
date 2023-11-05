@@ -1,4 +1,4 @@
-#modalWrap {
+.popup {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   top: 0;
@@ -8,19 +8,23 @@
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-#modalBody {
+#addFriendBody {
   width: 100%;
   height: 20vh;
   border: none;
   background-color: #fff;
 }
+
+.dellFriend,
 .plusFriend {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .popupHeader {
   font-size: 5vh;
+  margin: 2vh 0 1vh 0;
 }
 
 .plusFriend-row {
@@ -29,6 +33,7 @@
   height: 4vh;
   align-items: center;
   justify-content: space-between;
+  margin: 0.7vh 0;
 }
 
 .plusFriend-row input {
@@ -46,4 +51,48 @@
   height: 100%;
   border: none;
   background-color: transparent;
+}
+/*********************************************/
+/******************친구 알림 CSS****************/
+/*********************************************/
+.closeUp {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeUp img {
+  height: 10vh;
+}
+
+#dellFriendBody {
+  width: 100%;
+  height: 90vh;
+  border: none;
+  background-color: #fff;
+}
+
+.bellFriend-MainText {
+  width: 100%;
+  height: 100%;
+}
+
+.bellFriend-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5vh 0;
+}
+
+.bellFriend-name {
+  font-size: 3vh;
+  width: 50%;
+}
+
+.bellFriend-add__btn {
+  border: none;
+  background-color: transparent;
+  font-size: 3vh;
 }

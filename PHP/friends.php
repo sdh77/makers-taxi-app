@@ -29,22 +29,34 @@ if ($result) {
 }
 echo "<hr>";
 
-$searchFriend = "select * from friend where id = '" . $_SESSION['id'] . "'";
+$searchFriend = "select * from friend where id = '" . $_SESSION['id'] . "' or friendid = '" . $_SESSION['id'] . "' order by id";
 $SearchFriendResult = pg_query($conn, $searchFriend);
 if ($SearchFriendResult) {
   if (pg_num_rows($SearchFriendResult) > 0) {
     while ($row = pg_fetch_assoc($SearchFriendResult)) {
-      echo '<div class="profile__column friendsProfile">';
-      if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg'))) {
-        echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg"/>';
-      } else {
-        echo '<img src="PROFILE/default.jpeg"/>';
+      if (preg_replace('/\s+/', '', $row["id"]) == $_SESSION['id']) {
+        echo '<div class="profile__column friendsProfile">';
+        if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg'))) {
+          echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg"/>';
+        } else {
+          echo '<img src="PROFILE/default.jpeg"/>';
+        }
+        echo '<div class="nickName">' . $row["friendid"] . '</div>
+          </div>';
+      } else if ($row['friendcheck'] == "t") {
+        echo '<div class="profile__column friendsProfile">';
+        if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["id"]) . '.jpeg'))) {
+          echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["id"]) . '.jpeg"/>';
+        } else {
+          echo '<img src="PROFILE/default.jpeg"/>';
+        }
+        echo '<div class="nickName">' . $row["id"] . '</div>
+          </div>';
       }
-      echo '<div class="nickName">' . $row["friendid"] . '</div>
-        </div>';
     }
   }
 }
 echo '</div>';
+pg_close($conn);
 
 ?>

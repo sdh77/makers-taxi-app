@@ -1,3 +1,10 @@
 <?php
- echo "<h3>chatRoom</h3>";
+echo '<div class="main-top">
+<p>Chat</p>
+</div>';
+
+echo '<div class="main-middle">
+본문
+</div>';
+
 ?>
