@@ -15,6 +15,7 @@
   background-color: #fff;
 }
 
+.addChat,
 .bellFriend,
 .plusFriend {
   display: flex;
@@ -27,13 +28,16 @@
   margin: 2vh 0 1vh 0;
 }
 
-.plusFriend-row {
+.popupRow {
   display: flex;
   width: 90%;
   height: 4vh;
+  margin: 0.7vh 0;
+}
+
+.plusFriend-row {
   align-items: center;
   justify-content: space-between;
-  margin: 0.7vh 0;
 }
 
 .plusFriend-row input {
@@ -41,9 +45,6 @@
   height: 100%;
   border: none;
   border-bottom: 1px solid black;
-}
-.plusFriend-row input:focus {
-  outline: none;
 }
 
 .plusFriend-row button {
@@ -55,17 +56,19 @@
 /*********************************************/
 /******************친구 알림 CSS****************/
 /*********************************************/
-.closeUp {
+.addChatForm-closeUp,
+.bellFriendFrom-closeUp {
   width: 100%;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.closeUp img {
+.addChatForm-closeUp img,
+.bellFriendFrom-closeUp img {
   height: 10vh;
 }
-
+#addChatBody,
 #bellFriendBody {
   width: 100%;
   height: 90vh;
@@ -95,4 +98,48 @@
   border: none;
   background-color: transparent;
   font-size: 3vh;
+}
+
+/*********************************************/
+/******************채팅 만들기 CSS***************/
+/*********************************************/
+.addChat-row * {
+  vertical-align: middle;
+}
+.addChat-row select {
+  border: none;
+}
+
+.addChat-row input {
+  border: none;
+}
+
+.addChat-Btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 2vh;
+}
+
+.addChat-RoomTitle {
+  border: none;
+  border-bottom: 1px solid black;
+}
+.addChat-RoomTitle input {
+  width: 90%;
+}
+#addChat-memberNum,
+#addChat-defaultMemberNum,
+#addChat-goalArea,
+#addChat-startArea {
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
+}
+
+.addChat-option {
+  width: 30%;
 }

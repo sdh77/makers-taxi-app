@@ -68,11 +68,7 @@ if ($friendName != "") {
     }
   }
   
-  echo $findId;
-  echo $findIt;
-  echo $findAllow;
-  echo $duplicationId;
-  echo $duplicationActionDo;
+
   $addSql = "insert into friend(id,friendId) values('" . $myId . "','" . $friendId . "')";
   if ($findId != 0 && $findIt == 0 && $findAllow == 0 && $duplicationId == 0 && $duplicationActionDo == 0) {
     pg_query($conn, $addSql);
@@ -84,6 +80,25 @@ if ($friendName != "") {
     echo $duplicationAdd;
     pg_query($conn, $duplicationAdd);  
   }
+  // echo"{
+  //   'findId':". $findId.",
+  //   'findIt':". $findIt.",
+  //   'findAllow':". $findAllow.",
+  //   'duplicationId':". $duplicationId.",
+  // }";
+  
+  if($findId == 0)  echo "
+    <script type='text/javascript'>
+    alert('친구 아이디를 확인하세요');
+    </script>";
+  else if($findIt != 0 || $findAllow != 0)  echo "
+    <script type='text/javascript'>
+    alert('이미 추가된 아이디 입니다.');
+    </script>";
+  else if($duplicationId != 0)  echo "
+    <script type='text/javascript'>
+    alert('자신의 아이디는 추가할 수 없습니다.');
+    </script>";
 }
 pg_close($conn);
 ?>

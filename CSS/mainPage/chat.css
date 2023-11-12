@@ -1,0 +1,25 @@
+.chatList {
+  display: flex;
+  flex-direction: column;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+}
+.chatList-row {
+  width: 90%;
+  justify-content: space-between;
+}
+
+.chatList-timeTitle {
+  width: 20%;
+  justify-content: space-between;
+}
+
+.chatList-chatid {
+  display: none;
+}
+
+.chatList-row button {
+  border: none;
+  background-color: transparent;
+}

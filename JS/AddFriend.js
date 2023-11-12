@@ -32,7 +32,11 @@ function AddFriend(event) {
       friendId: plusFriendId.value,
       myId: my_id,
     };
-    $.ajax({ url: "PHP/plusFriend.php", type: "post", data: addFriendObj });
+    $.ajax({
+      url: "PHP/plusFriend.php",
+      type: "post",
+      data: addFriendObj,
+    }).done(function (data) {});
     plusFriendId.value = "";
     updateFriendList();
   }

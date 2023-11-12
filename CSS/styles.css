@@ -11,11 +11,19 @@
 @import "mainPage/mainPage.css";
 @import "mainPage/setting.css";
 @import "mainPage/friends.css";
+@import "mainPage/chat.css";
 
 @import "component/rowColumn.css";
 @import "component/backBtn.css";
 @import "component/topMiddleArea.css";
 @import "component/popup.css";
+@import "component/textCenter.css";
+
+select:focus,
+input:focus {
+  outline: none;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
 }
