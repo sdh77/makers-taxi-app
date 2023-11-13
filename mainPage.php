@@ -22,7 +22,7 @@ if (isset($_SESSION["id"])) {
     </div>
     <div>
       <button class="chatroom">
-        <i class="fa-regular fa-comment"></i>
+        <i class="fa-solid fa-comment"></i>
       </button>
     </div>
     <div>
