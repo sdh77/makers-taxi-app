@@ -19,7 +19,7 @@ function submitAddChat() {
   };
   $.ajax({ url: "PHP/addChatRoom.php", type: "post", data: addChatData });
   addChatForm.style.display = "none";
-  updateChatList();
+  setTimeout(updateChatList, 100);
 }
 
 addChatBtn.addEventListener("click", submitAddChat);

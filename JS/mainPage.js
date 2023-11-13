@@ -64,11 +64,8 @@ function deleteLike(event) {
     myId: myId,
     action: 0,
   };
-  $.ajax({ url: "PHP/alterLikeChat.php", type: "post", data: sendItem }).done(
-    function () {
-      updateChatList;
-    }
-  );
+  $.ajax({ url: "PHP/alterLikeChat.php", type: "post", data: sendItem });
+  setTimeout(updateChatList, 100);
 }
 function Like(event) {
   const thisChatId = event.target.parentElement.querySelector(
@@ -80,11 +77,8 @@ function Like(event) {
     myId: myId,
     action: 1,
   };
-  $.ajax({ url: "PHP/alterLikeChat.php", type: "post", data: sendItem }).done(
-    function () {
-      updateChatList;
-    }
-  );
+  $.ajax({ url: "PHP/alterLikeChat.php", type: "post", data: sendItem });
+  setTimeout(updateChatList, 100);
 }
 
 function updateFriendList() {
