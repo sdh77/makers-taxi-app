@@ -18,8 +18,8 @@ function allowFriend(event) {
     myId: my_id,
   };
   $.ajax({ url: "PHP/plusFriend.php", type: "post", data: addFriendObj });
-  updateFriendList();
-  updateBellList();
+  setTimeout(updateFriendList, 100);
+  setTimeout(updateBellList, 100);
 }
 
 function AddFriend(event) {
@@ -38,7 +38,7 @@ function AddFriend(event) {
       data: addFriendObj,
     }).done(function (data) {});
     plusFriendId.value = "";
-    updateFriendList();
+    setTimeout(updateFriendList, 100);
   }
 }
 
