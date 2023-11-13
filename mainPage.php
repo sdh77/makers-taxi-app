@@ -112,6 +112,16 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
+
+  <div id="friendManagementForm" class="popup">
+  <div id="modalContent">
+    <div id="friendManagementBody">
+      <div class="friendManagement">
+        <button class="friendManagement-deleteBtn">친구 삭제</button>
+      </div>
+    </div>
+  </div>
+  
 </div>
 <div class="hideMy-id">' . $_SESSION['id'] . '</div>
 
