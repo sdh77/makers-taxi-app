@@ -17,7 +17,7 @@ if (isset($_SESSION["id"])) {
   <div class="main-bottom">
     <div>
       <button class="friends">
-        <i class="fa-solid fa-user-group"></i>
+        <i class="fa-solid fa-user-group click"></i>
       </button>
     </div>
     <div>

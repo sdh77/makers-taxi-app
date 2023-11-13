@@ -23,16 +23,25 @@ addChatForm.style.display = "none";
 function showFriends() {
   // main_middle.innerHTML = "친구창";
   updateFriendList();
+  friends.querySelector("i").classList.add("click");
+  chatRoom.querySelector("i").classList.remove("click");
+  setting.querySelector("i").classList.remove("click");
 }
 
 function showChatRoom() {
   updateChatList();
+  friends.querySelector("i").classList.remove("click");
+  chatRoom.querySelector("i").classList.add("click");
+  setting.querySelector("i").classList.remove("click");
 }
 
 function showSetting() {
   $.ajax({ url: "PHP/setting.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
   });
+  friends.querySelector("i").classList.remove("click");
+  chatRoom.querySelector("i").classList.remove("click");
+  setting.querySelector("i").classList.add("click");
 }
 
 function chatPlus() {
