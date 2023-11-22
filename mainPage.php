@@ -127,6 +127,7 @@ if (isset($_SESSION["id"])) {
 
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="JS/EntranceRoom.js"></script>
   <script src="JS/mainPage.js"></script>
   <script src="JS/AddFriend.js"></script>
   <script src="JS/AddChat.js"></script>

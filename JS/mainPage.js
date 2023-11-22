@@ -110,11 +110,15 @@ function updateChatList() {
     reloadBtn.addEventListener("click", updateChatList);
     deleteLikeBtns = document.querySelectorAll(".chatList-deleteLikeBtn");
     LikeBtns = document.querySelectorAll(".chatList-LikeBtn");
+    EntranceBtns = document.querySelectorAll(".chatList-Entrance");
     deleteLikeBtns.forEach((deleteLikeBtn) => {
       deleteLikeBtn.addEventListener("click", deleteLike);
     });
     LikeBtns.forEach((LikeBtn) => {
       LikeBtn.addEventListener("click", Like);
+    });
+    EntranceBtns.forEach((EntranceBtn) => {
+      EntranceBtn.addEventListener("click", EntranceChat);
     });
   });
 }
@@ -142,12 +146,11 @@ var pcLong = 0;
 function mouseStart() {
   pcLong = Date.now(); //클릭한 시간 얻어옵니다
 }
-function mouseEnd() {
+function mouseEnd(evt) {
   var result = Date.now() - pcLong;
   if (Number(result) > 400) {
     //롱 터치 발생
     // alert("LongTouch");
-    console.dir(evt.target);
     let friendId;
     if (evt.target.classList[0] == "nickName") {
       friendId = evt.target.innerHTML;
