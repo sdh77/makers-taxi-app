@@ -28,30 +28,33 @@ if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {
     while ($chatList = pg_fetch_array($chatLists)) {
       echo "<div class='chatList'>
-        <div class='row chatList-row'>
-          <div class='row chatList-timeTitle'>
-            <p>" . $chatList["endtime"] . "</p>
-            <!--<p>" . $chatList['chattitle'] . "</p>-->
-            <p class='chatList-chatid'>" . $chatList['chatid'] . "</p>
-          </div>";
+                <div class='row chatList-row'>
+                  <div class='row chatList-timeTitle'>
+                    <p>" . $chatList["endtime"] . "</p>
+                <!--<p>" . $chatList['chattitle'] . "</p>-->
+                    <p class='chatList-chatid'>" . $chatList['chatid'] . "</p>
+                  </div>";
       if (in_array($chatList['chatid'], $myLikeChatLists))
         echo "<button class='chatList-deleteLikeBtn'>🩷</button>";
       else
         echo "<button class='chatList-LikeBtn'>🩶</button>";
       echo "</div>
-        <div class='row chatList-row'>
-          <div class='row'>
-          <p>" . $chatList['startarea'] . "</p>
-          <p>-></p>
-          <p>" . $chatList['goalarea'] . "</p>
-          </div>
-          <div class='row'>
-          <p>" . $chatList['defaultnum'] . "</p>
-          <p>/</p>
-          <p>" . $chatList['membernum'] . "</p>
-          </div>
-        </div>
-      </div>";
+                <div class='row chatList-row'>
+                  <div class='row'>
+                    <p>" . $chatList['startarea'] . "</p>
+                    <p> -> </p>
+                    <p>" . $chatList['goalarea'] . "</p>
+                  </div>
+                  <div class='row'>
+                    <p>" . $chatList['defaultnum'] . "</p>
+                    <p>/</p>
+                    <p>" . $chatList['membernum'] . "</p>
+                  </div>
+                </div>
+                <button class='chatList-Entrance'>
+                  입장
+                </button>
+            </div>";
     }
   }
 }
@@ -59,3 +62,4 @@ echo "</div>";
 pg_close($conn);
 
 ?>
+<button> </button>

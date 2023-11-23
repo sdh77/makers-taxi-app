@@ -112,11 +112,22 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
+
+  <div id="friendManagementForm" class="popup">
+  <div id="modalContent">
+    <div id="friendManagementBody">
+      <div class="friendManagement">
+        <button class="friendManagement-deleteBtn">친구 삭제</button>
+      </div>
+    </div>
+  </div>
+  
 </div>
 <div class="hideMy-id">' . $_SESSION['id'] . '</div>
 
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="JS/EntranceRoom.js"></script>
   <script src="JS/mainPage.js"></script>
   <script src="JS/AddFriend.js"></script>
   <script src="JS/AddChat.js"></script>

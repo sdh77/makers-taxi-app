@@ -143,3 +143,17 @@
 .addChat-option {
   width: 30%;
 }
+
+/*********************************************/
+/******************친구 관리 CSS****************/
+/*********************************************/
+
+.friendManagement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 25%;
+  background-color: white;
+}
