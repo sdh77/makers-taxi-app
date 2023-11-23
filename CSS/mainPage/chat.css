@@ -1,7 +1,12 @@
+.Btn-chatList {
+  height: 8%;
+  border: none;
+  background-color: transparent;
+}
+
 .chatList {
   display: flex;
   flex-direction: column;
-  height: 8%;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -24,4 +29,9 @@
 .chatList-row button {
   border: none;
   background-color: transparent;
+}
+.chatList-Entrance {
+  position: absolute;
+  right: 15%;
+  font-size: 2vh;
 }
