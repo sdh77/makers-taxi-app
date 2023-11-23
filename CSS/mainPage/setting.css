@@ -32,3 +32,27 @@
 .main-top-gear {
   font-size: 3vh;
 }
+.setArea {
+  font-size: 3vh;
+  margin: 10px;
+}
+.setArea-money {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.setArea-chargeMoney {
+  padding: 10px 0;
+}
+.setArea-sendMoney {
+  padding: 10px 0;
+}
+.setArea-totalMoney {
+  padding: 10px 0;
+}
+.setArea-logout {
+  padding: 10px 0;
+  font-size: 3vh;
+  border: none;
+  background-color: transparent;
+}

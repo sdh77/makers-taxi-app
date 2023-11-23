@@ -40,6 +40,8 @@ function showChatRoom() {
 function showSetting() {
   $.ajax({ url: "PHP/setting.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
+    const logOutBtn = document.querySelector(".setArea-logout");
+    logOutBtn.addEventListener("click", logOut);
   });
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.remove("click");
@@ -151,21 +153,26 @@ function mouseEnd(evt) {
   if (Number(result) > 400) {
     //롱 터치 발생
     // alert("LongTouch");
-    let friendId;
+    let friendNickName;
     if (evt.target.classList[0] == "nickName") {
-      friendId = evt.target.innerHTML;
+      friendNickName = evt.target.innerHTML;
     } else if (evt.target.classList[0] == "profile__column") {
-      friendId = evt.target.querySelector(".nickName").innerHTML;
+      friendNickName = evt.target.querySelector(".nickName").innerHTML;
     } else if (evt.target.tagName == "IMG") {
-      friendId = evt.target.parentElement.querySelector(".nickName").innerHTML;
+      friendNickName =
+        evt.target.parentElement.querySelector(".nickName").innerHTML;
     }
 
+    const friendNickNameArea = document.querySelector(
+      ".friendManagement-friend_name"
+    );
+    friendNickNameArea.innerHTML = friendNickName;
     friendManagementForm.style.display = "block";
     const deleteBtn = document.querySelector(".friendManagement-deleteBtn");
 
     deleteBtn.addEventListener("click", () => {
       const friendDB = {
-        friendId: friendId,
+        friendNickName: friendNickName,
         myId: myId,
       };
       $.ajax({
@@ -189,13 +196,14 @@ function touchEnd(evt) {
     //롱 터치 발생
     // alert("LongTouch");
     console.dir(evt.target);
-    let friendId;
+    let friendNickName;
     if (evt.target.classList[0] == "nickName") {
-      friendId = evt.target.innerHTML;
+      friendNickName = evt.target.innerHTML;
     } else if (evt.target.classList[0] == "profile__column") {
-      friendId = evt.target.querySelector(".nickName").innerHTML;
+      friendNickName = evt.target.querySelector(".nickName").innerHTML;
     } else if (evt.target.tagName == "IMG") {
-      friendId = evt.target.parentElement.querySelector(".nickName").innerHTML;
+      friendNickName =
+        evt.target.parentElement.querySelector(".nickName").innerHTML;
     }
 
     friendManagementForm.style.display = "block";
@@ -203,7 +211,7 @@ function touchEnd(evt) {
 
     deleteBtn.addEventListener("click", () => {
       const friendDB = {
-        friendId: friendId,
+        friendNickName: friendNickName,
         myId: myId,
       };
       $.ajax({
@@ -215,6 +223,14 @@ function touchEnd(evt) {
       setTimeout(updateFriendList, 100);
     });
   }
+}
+
+function logOut() {
+  $.ajax({
+    url: "PHP/logOut.php",
+    type: "post",
+  });
+  window.location.href = "/makers-taxi-app/index.html";
 }
 
 friends.addEventListener("click", showFriends);

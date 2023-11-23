@@ -18,19 +18,19 @@ echo '<h2>' . $_SESSION["id"] . '</h2>
             <span>9999!! </span>
           </div>
         </div>';
-echo '   <div>
+echo "<hr>";
+echo '<div class="setArea">
+         <div class="setArea-money">
           <div>택시비</div>
           <div>0원</div>
-          <div>충전</div>
-          <div>송금</div>
-        </div>';
-echo '   <div>
+        </div>
+        <div class="setArea-chargeMoney">충전</div>
+        <div class="setArea-sendMoney">송금</div>';
+echo '  <div class="setArea-totalMoney">
           택시 사용 금액
         </div>
-        <div>
+        <button class="setArea-logout">
           로그아웃
-        </div>';
-
-
+        </button>';
 echo '</div>';
 ?>

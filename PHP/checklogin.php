@@ -15,15 +15,19 @@ if ($result) {
         $_SESSION["id"] = $row["id"];
         echo "
         <script type='text/javascript'>
-        window.location.href = '../mainPage.php';
+        setTimeout(() => {
+          window.location.href = '../mainPage.php';  
+        }, 100);
         </script>";
 
       } else {
         // echo "비밀번호를 확인하세요";
         echo "
         <script type='text/javascript'>
+        setTimeout(() => {
         alert('비밀번호를 확인하세요');
         window.location.href = '../loginPage.html';
+        },100);
         </script>";
       }
     }
@@ -32,7 +36,9 @@ if ($result) {
     echo "
         <script>
         alert('아이디 정보가 없습니다.');
+        setTimeout(() => {
         window.location.href = '../loginPage.html';
+        },100);
         </script>";
   }
 }

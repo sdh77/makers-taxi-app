@@ -117,6 +117,7 @@ if (isset($_SESSION["id"])) {
   <div id="modalContent">
     <div id="friendManagementBody">
       <div class="friendManagement">
+        <div class="friendManagement-friend_name">친구 이름</div>
         <button class="friendManagement-deleteBtn">친구 삭제</button>
       </div>
     </div>

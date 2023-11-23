@@ -41,8 +41,17 @@ if ($SearchFriendResult) {
         } else {
           echo '<img src="PROFILE/default.jpeg"/>';
         }
-        echo '<div class="nickName">' . $row["friendid"] . '</div>
-          </div>';
+        $searchNickNameSql = "select nickname from taxi_userinfo where id = '" . trim($row["friendid"]) . "'";
+        $NickNames = pg_query($conn, $searchNickNameSql);
+        if ($NickNames) {
+          if (pg_num_rows($NickNames) > 0) {
+            while ($NickName = pg_fetch_assoc($NickNames)) {
+              echo '<div class="nickName">' . $NickName["nickname"] . '</div>
+                </div>';
+            }
+          }
+        }
+
       } else if ($row['friendcheck'] == "t") {
         echo '<div class="profile__column friendsProfile long-click">';
         if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["id"]) . '.jpeg'))) {
@@ -50,10 +59,17 @@ if ($SearchFriendResult) {
         } else {
           echo '<img src="PROFILE/default.jpeg"/>';
         }
-        echo '<div class="nickName">' . $row["id"] . '</div>
-          </div>';
+        $searchNickNameSql = "select nickname from taxi_userinfo where id = '" . trim($row["id"]) . "'";
+        $NickNames = pg_query($conn, $searchNickNameSql);
+        if ($NickNames) {
+          if (pg_num_rows($NickNames) > 0) {
+            while ($NickName = pg_fetch_assoc($NickNames)) {
+              echo '<div class="nickName">' . $NickName["nickname"] . '</div>
+                </div>';
+            }
+          }
+        }
       }
-
     }
   }
 }
