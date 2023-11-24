@@ -32,7 +32,7 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
-  <div id="addFriendForm" class="popup">
+  <div id="addFriendForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="addFriendBody">
         <div class="plusFriend">
@@ -50,7 +50,7 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
-  <div id="bellFriendForm" class="popup">
+  <div id="bellFriendForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="bellFriendBody">
         <div class="bellFriend">
@@ -63,7 +63,7 @@ if (isset($_SESSION["id"])) {
     </div>
   </div>
 
-  <div id="addChatForm" class="popup">
+  <div id="addChatForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="addChatBody">
         <div class="addChat">
@@ -113,18 +113,35 @@ if (isset($_SESSION["id"])) {
   </div>
 
 
-  <div id="friendManagementForm" class="popup">
-  <div id="modalContent">
-    <div id="friendManagementBody">
-      <div class="friendManagement">
-        <div class="friendManagement-friend_name">친구 이름</div>
-        <button class="friendManagement-deleteBtn">친구 삭제</button>
+  <div id="friendManagementForm" class="popup popup-hide">
+    <div id="modalContent">
+      <div id="friendManagementBody">
+        <div class="friendManagement">
+          <div class="friendManagement-friend_name">친구 이름</div>
+          <button class="friendManagement-deleteBtn">친구 삭제</button>
+        </div>
       </div>
     </div>
   </div>
-  
-</div>
-<div class="hideMy-id">' . $_SESSION['id'] . '</div>
+  <div id="chargeMoneyForm" class="popup popup-hide">
+    <div id="modalContent">
+      <div id="chargeMoneyBody">
+        <div class="chargeMoneyBody-header">얼마나 층전할까요?</div>
+        <hr>
+        
+        <div class="chargeMoney">
+          <button class="chargeMoney-selectMoney">100000원</button>
+          <button class="chargeMoney-selectMoney">50000원</button>
+          <button class="chargeMoney-selectMoney">30000원</button>
+          <button class="chargeMoney-selectMoney">10000원</button>
+          <button class="chargeMoney-selectMoney">5000원</button>
+          <button class="chargeMoney-selectMoney">1000원</button>
+          <button class="chargeMoney-selectMoney">직접입력</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hideMy-id">' . $_SESSION['id'] . '</div>
 
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

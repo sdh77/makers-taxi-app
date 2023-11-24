@@ -37,14 +37,42 @@
   margin: 10px;
 }
 .setArea-money {
+  border: 1px solid black;
+}
+.setArea-myMoney {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
 }
+.setArea-myMoney__txt {
+  width: 50%;
+  text-align: center;
+}
+.setArea-myMoney__money {
+  width: 50%;
+  text-align: center;
+}
+.setArea-money_btn {
+  display: flex;
+  justify-content: space-between;
+}
 .setArea-chargeMoney {
+  font-size: 3vh;
+  border: none;
+  background-color: transparent;
   padding: 10px 0;
+  width: 50%;
+  text-align: center;
 }
 .setArea-sendMoney {
+  font-size: 3vh;
+  border: none;
+  background-color: transparent;
+  padding: 10px 0;
+  width: 50%;
+  text-align: center;
+}
+.setArea-announcement {
   padding: 10px 0;
 }
 .setArea-totalMoney {

@@ -10,6 +10,7 @@ const bellFormClose = document.querySelector(".bellFriendFrom-closeUp");
 const bellFormCloseImg = document.querySelector(".bellFriendFrom-closeUp img");
 const addChatFormClose = document.querySelector(".addChatForm-closeUp");
 const addChatFormCloseImg = document.querySelector(".addChatForm-closeUp img");
+const chargeMoneyForm = document.getElementById("chargeMoneyForm");
 const bellFriendMainText = document.querySelector(".bellFriend");
 const addChatMainText = document.querySelector(".addChat");
 const friendManagementText = document.querySelector(".friendManagement");
@@ -18,10 +19,6 @@ const myId = document.querySelector(".hideMy-id").innerHTML;
 
 // showSetting();
 showFriends();
-addFriendForm.style.display = "none";
-bellFriendForm.style.display = "none";
-addChatForm.style.display = "none";
-friendManagementForm.style.display = "none";
 function showFriends() {
   // main_middle.innerHTML = "친구창";
   updateFriendList();
@@ -41,7 +38,15 @@ function showSetting() {
   $.ajax({ url: "PHP/setting.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
     const logOutBtn = document.querySelector(".setArea-logout");
+    const chargeMoneyBtn = document.querySelector(".setArea-chargeMoney");
+    const moneyBtns = document.querySelectorAll(".chargeMoney-selectMoney");
+    const sendMoneyBtn = document.querySelector(".setArea-sendMoney");
     logOutBtn.addEventListener("click", logOut);
+    chargeMoneyBtn.addEventListener("click", showChargeMoneyPopup);
+    moneyBtns.forEach(function (moneyBtn) {
+      moneyBtn.addEventListener("click", chargeMoney);
+    });
+    sendMoneyBtn.addEventListener("click", sendMoney);
   });
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.remove("click");
@@ -49,12 +54,14 @@ function showSetting() {
 }
 
 function chatPlus() {
-  addChatForm.style.display = "block";
+  addChatForm.classList.add("popup-visible");
+  addChatForm.classList.remove("popup-hide");
   console.log("plus");
 }
 
 function friendPlus() {
-  addFriendForm.style.display = "block";
+  addFriendForm.classList.add("popup-visible");
+  addFriendForm.classList.remove("popup-hide");
   addFriendFormInputText.focus();
 }
 
@@ -127,19 +134,26 @@ function updateChatList() {
 
 window.onclick = function (event) {
   if (event.target == addFriendForm) {
-    addFriendForm.style.display = "none";
+    addFriendForm.classList.add("popup-hide");
+    addFriendForm.classList.remove("popup-visible");
   } else if (event.target == friendManagementForm) {
-    friendManagementForm.style.display = "none";
+    friendManagementForm.classList.add("popup-hide");
+    friendManagementForm.classList.remove("popup-visible");
   } else if (
     event.target == bellFormClose ||
     event.target == bellFormCloseImg
   ) {
-    bellFriendForm.style.display = "none";
+    bellFriendForm.classList.add("popup-hide");
+    bellFriendForm.classList.remove("popup-visible");
   } else if (
     event.target == addChatFormClose ||
     event.target == addChatFormCloseImg
   ) {
-    addChatForm.style.display = "none";
+    addChatForm.classList.add("popup-hide");
+    addChatForm.classList.remove("popup-visible");
+  } else if (event.target == chargeMoneyForm) {
+    chargeMoneyForm.classList.add("popup-hide");
+    chargeMoneyForm.classList.remove("popup-visible");
   }
 };
 
@@ -167,7 +181,8 @@ function mouseEnd(evt) {
       ".friendManagement-friend_name"
     );
     friendNickNameArea.innerHTML = friendNickName;
-    friendManagementForm.style.display = "block";
+    friendManagementForm.classList.add("popup-visible");
+    friendManagementForm.classList.remove("popup-hide");
     const deleteBtn = document.querySelector(".friendManagement-deleteBtn");
 
     deleteBtn.addEventListener("click", () => {
@@ -180,7 +195,8 @@ function mouseEnd(evt) {
         type: "post",
         data: friendDB,
       });
-      friendManagementForm.style.display = "none";
+      friendManagementForm.classList.add("popup-hide");
+      friendManagementForm.classList.remove("popup-visible");
       setTimeout(updateFriendList, 100);
     });
   }
@@ -206,7 +222,8 @@ function touchEnd(evt) {
         evt.target.parentElement.querySelector(".nickName").innerHTML;
     }
 
-    friendManagementForm.style.display = "block";
+    friendManagementForm.classList.add("popup-visible");
+    friendManagementForm.classList.remove("popup-hide");
     const deleteBtn = document.querySelector(".friendManagement-deleteBtn");
 
     deleteBtn.addEventListener("click", () => {
@@ -219,7 +236,8 @@ function touchEnd(evt) {
         type: "post",
         data: friendDB,
       });
-      friendManagementForm.style.display = "none";
+      friendManagementForm.classList.add("popup-hide");
+      friendManagementForm.classList.remove("popup-visible");
       setTimeout(updateFriendList, 100);
     });
   }
@@ -232,7 +250,37 @@ function logOut() {
   });
   window.location.href = "/makers-taxi-app/index.html";
 }
-
+function showChargeMoneyPopup() {
+  chargeMoneyForm.classList.remove("popup-hide");
+  chargeMoneyForm.classList.add("popup-visible");
+}
+function chargeMoney(event) {
+  console.log(event.target.innerHTML);
+  const chargeMoneyData = {
+    myId: myId,
+    chargeMoney: event.target.innerHTML,
+  };
+  $.ajax({
+    url: "PHP/chargeMoney.php",
+    type: "post",
+    data: chargeMoneyData,
+  });
+  chargeMoneyForm.classList.add("popup-hide");
+  chargeMoneyForm.classList.remove("popup-visible");
+  setTimeout(showSetting, 100);
+}
+function sendMoney() {
+  const sendMoneyData = {
+    myId: myId,
+    sendMoney: 1000,
+  };
+  $.ajax({
+    url: "PHP/sendMoney.php",
+    type: "post",
+    data: sendMoneyData,
+  });
+  setTimeout(showSetting, 100);
+}
 friends.addEventListener("click", showFriends);
 chatRoom.addEventListener("click", showChatRoom);
 setting.addEventListener("click", showSetting);

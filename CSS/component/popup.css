@@ -1,3 +1,9 @@
+.popup-hide {
+  display: none;
+}
+.popup-visible {
+  display: block;
+}
 .popup {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -7,6 +13,10 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
+
+/*********************************************/
+/*******************친구 추가 CSS***************/
+/*********************************************/
 
 #addFriendBody {
   width: 100%;
@@ -168,5 +178,39 @@
 
 .friendManagement-deleteBtn {
   margin-top: 20px;
+  font-size: 3vh;
+}
+
+/*********************************************/
+/*******************충전 CSS*******************/
+/*********************************************/
+
+#chargeMoneyBody {
+  position: absolute;
+  top: 50vh;
+  width: 100vw;
+  height: 50vh;
+  border: none;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.chargeMoneyBody-header {
+  font-size: 4vh;
+  margin: 2vh 5vw;
+}
+.chargeMoney {
+  border-top: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chargeMoney-selectMoney {
+  width: 90%;
+  margin: 0.5vh;
+  text-align: left;
+  border: none;
+  background-color: transparent;
   font-size: 3vh;
 }

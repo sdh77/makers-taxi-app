@@ -1,5 +1,15 @@
 <?php
 session_start();
+$conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz password=taxi')
+  or die('Could not connect: ' . pg_last_error());
+$getMoneySql = "select money from user_money where id = '" . $_SESSION["id"] . "'";
+$moneyList = pg_query($conn, $getMoneySql);
+$money;
+if ($moneyList) {
+  if (pg_num_rows($moneyList) > 0)
+    while ($moneyData = pg_fetch_assoc($moneyList))
+      $money = $moneyData['money'];
+}
 echo '<div class="main-top">
         <p>Setting</p>
       </div>';
@@ -20,17 +30,26 @@ echo '<h2>' . $_SESSION["id"] . '</h2>
         </div>';
 echo "<hr>";
 echo '<div class="setArea">
-         <div class="setArea-money">
-          <div>택시비</div>
-          <div>0원</div>
+        <div class="setArea-money">
+          <div class="setArea-myMoney">
+            <div class="setArea-myMoney__txt">택시비</div>
+            <div class="setArea-myMoney__money">' . $money . '원</div>
+          </div>
+          <div class="setArea-money_btn">
+            <button class="setArea-chargeMoney">충전</button>
+            <button class="setArea-sendMoney">출금</button>
+          </div>
+        </div>';
+echo '  <div class="setArea-announcement">
+          공지사항
         </div>
-        <div class="setArea-chargeMoney">충전</div>
-        <div class="setArea-sendMoney">송금</div>';
-echo '  <div class="setArea-totalMoney">
-          택시 사용 금액
+        <div class="setArea-totalMoney">
+          이용 내역
         </div>
         <button class="setArea-logout">
           로그아웃
         </button>';
 echo '</div>';
+pg_close($conn);
+
 ?>

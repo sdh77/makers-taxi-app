@@ -1,7 +1,8 @@
 const my_id = document.querySelector(".my-id").innerHTML;
 
 function BellList() {
-  bellFriendForm.style.display = "block";
+  bellFriendForm.classList.add("popup-visible");
+  bellFriendForm.classList.remove("popup-hide");
   console.log("bell");
   updateBellList();
 }

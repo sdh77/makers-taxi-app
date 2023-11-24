@@ -18,7 +18,8 @@ function submitAddChat() {
     endTime: addChatEndTime,
   };
   $.ajax({ url: "PHP/addChatRoom.php", type: "post", data: addChatData });
-  addChatForm.style.display = "none";
+  addChatForm.classList.add("popup-hide");
+  addChatForm.classList.remove("popup-visible");
   setTimeout(updateChatList, 100);
 }
 
