@@ -10,10 +10,15 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px 0;
+  margin: 5px 5%;
+  font-size: 2.25vh;
+  width: 90%;
 }
 
 .chatList-row {
-  width: 90%;
+  margin: 3px 0;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -30,8 +35,25 @@
   border: none;
   background-color: transparent;
 }
+.chatList-deleteLikeBtn {
+  font-size: 2.5vh;
+  color: red;
+}
+.chatList-LikeBtn {
+  font-size: 2.5vh;
+}
 .chatList-Entrance {
   position: absolute;
-  right: 15%;
-  font-size: 2vh;
+  right: 17%;
+  font-size: 2.25vh;
+  border: none;
+  background-color: var(--button-color);
+  border-radius: 10px;
+  padding: 0.5vh;
+}
+.addChat-EndTime {
+  border: none;
+}
+.border-bottom-red {
+  border-bottom: 1px solid red;
 }

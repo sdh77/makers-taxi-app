@@ -34,7 +34,7 @@
 }
 
 .popupHeader {
-  font-size: 5vh;
+  font-size: 3vh;
   margin: 2vh 0 1vh 0;
 }
 
@@ -50,18 +50,20 @@
   justify-content: space-between;
 }
 
-.plusFriend-row input {
+.plusFriend-row .plusFriend-id {
   width: 85%;
   height: 100%;
   border: none;
   border-bottom: 1px solid black;
+  font-size: 2vh;
 }
 
-.plusFriend-row button {
+.plusFriend-row .submitAddFriend {
   width: 15%;
   height: 100%;
   border: none;
   background-color: transparent;
+  font-size: 2vh;
 }
 /*********************************************/
 /******************친구 알림 CSS****************/
@@ -119,9 +121,12 @@
 .addChat-row select {
   border: none;
 }
-
-.addChat-row input {
+.addChat-row .textCenter {
+  font-size: 2vh;
+}
+.addChat-row .addChat-chatName {
   border: none;
+  font-size: 2vh;
 }
 
 .addChat-Btn {
@@ -143,13 +148,16 @@
 }
 #addChat-memberNum,
 #addChat-defaultMemberNum,
-#addChat-goalArea,
-#addChat-startArea {
+.addChat-goalArea,
+.addChat-startArea {
   -webkit-appearance: none; /* 크롬 화살표 없애기 */
   -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
   appearance: none; /* 화살표 없애기 */
+  font-size: 2vh;
 }
-
+.addChat-EndTime {
+  font-size: 2vh;
+}
 .addChat-option {
   width: 30%;
 }

@@ -1,0 +1,15 @@
+.time-Error {
+  font-size: 2vh;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.Error-txt {
+  color: red;
+}
+.Error-hide {
+  display: none;
+}
+.Error-visible {
+  display: flex;
+}

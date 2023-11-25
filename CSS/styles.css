@@ -1,6 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap'); */
 
 @import "reset.css";
+@import "variable.css";
 
 @import "FirstPage/FirstPage.css";
 
@@ -19,6 +20,7 @@
 @import "component/topMiddleArea.css";
 @import "component/popup.css";
 @import "component/textCenter.css";
+@import "component/Error.css";
 
 select:focus,
 input:focus {

@@ -1,1 +1,13 @@
-@root;
+:root {
+  /* --main-color: #9eb8d9; */
+  --main-color: white;
+  --white-blue-color: #eef5ff;
+  --button-color: #b5cce7;
+  --button-color-click: #7c93c3;
+}
+/*
+EEF5FF
+9EB8D9
+7C93C3
+A25772
+*/

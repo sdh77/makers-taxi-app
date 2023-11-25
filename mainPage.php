@@ -72,7 +72,7 @@ if (isset($_SESSION["id"])) {
           </div>
           <button class="addChat-Btn">확인</button>
           <div class="popupRow addChat-row addChat-RoomTitle">
-            <input type="text"></input>
+            <input type="text" class="addChat-chatName" placeholder="같이 가요! 👋🏻"></input>
             <select id="addChat-defaultMemberNum">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -101,8 +101,9 @@ if (isset($_SESSION["id"])) {
             </select>
           </div>
           <div class="popupRow addChat-row">
-            <div class="textCenter addChat-option">모집 시간</div>
-            <input class="addChat-EndTime" type="time">
+            <div class="textCenter addChat-option addChat-tiemtxt">모집 시간</div>
+            <input class="addChat-EndTime" type="time" required>
+            <div class="time-Error Error-txt Error-hide"><p>시간을 입력해 주세요!</p></div>
           </div>
         </div>
       </div>

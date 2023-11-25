@@ -3,12 +3,19 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 1vh;
+  margin: 1vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-
+.profileImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .profile__column {
   display: flex;
   flex-direction: row;
-  padding: 1vh;
+  /* padding: 1vh; */
 }
 
 .profile__column img {

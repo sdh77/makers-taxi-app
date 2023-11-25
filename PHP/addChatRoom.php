@@ -13,9 +13,8 @@ echo $memberNum;
 echo $startArea;
 echo $goalArea;
 echo $endTime;
-
 $insertChatList = "insert into chatList(chattitle,defaultnum,membernum,startarea,goalarea,endtime)
 values ('" . $chatTitle . "'," . $defaultNum . "," . $memberNum . ",'" . $startArea . "','" . $goalArea . "','" . $endTime . "')";
 pg_query($conn, $insertChatList);
-
+pg_close($conn);
 ?>

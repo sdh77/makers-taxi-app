@@ -16,7 +16,7 @@ if ($result) {
   if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_assoc($result)) {
       // echo 'PROFILE/' . $_SESSION['id'] . '.jpeg';
-      echo '<div class="profile__column friendsProfile">';
+      echo '<div class="myProfile">';
       if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
         echo '<img src="PROFILE/' . $_SESSION['id'] . '.jpeg"/>';
       } else {
@@ -27,7 +27,7 @@ if ($result) {
     }
   }
 }
-echo "<hr>";
+// echo "<hr>";
 
 $searchFriend = "select * from friend where id = '" . $_SESSION['id'] . "' or friendid = '" . $_SESSION['id'] . "' order by id";
 $SearchFriendResult = pg_query($conn, $searchFriend);
@@ -35,7 +35,7 @@ if ($SearchFriendResult) {
   if (pg_num_rows($SearchFriendResult) > 0) {
     while ($row = pg_fetch_assoc($SearchFriendResult)) {
       if (preg_replace('/\s+/', '', $row["id"]) == $_SESSION['id']) {
-        echo '<div class="profile__column friendsProfile long-click">';
+        echo '<div class=" friendsProfile long-click">';
         if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg'))) {
           echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["friendid"]) . '.jpeg"/>';
         } else {
@@ -46,14 +46,14 @@ if ($SearchFriendResult) {
         if ($NickNames) {
           if (pg_num_rows($NickNames) > 0) {
             while ($NickName = pg_fetch_assoc($NickNames)) {
-              echo '<div class="nickName">' . $NickName["nickname"] . '</div>
+              echo '<div class="nickName"> ' . $NickName["nickname"] . '</div>
                 </div>';
             }
           }
         }
 
       } else if ($row['friendcheck'] == "t") {
-        echo '<div class="profile__column friendsProfile long-click">';
+        echo '<div class=" friendsProfile long-click">';
         if (file_exists(('../PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["id"]) . '.jpeg'))) {
           echo '<img src="PROFILE/' . $outputString = preg_replace('/\s+/', '', $row["id"]) . '.jpeg"/>';
         } else {

@@ -9,12 +9,32 @@
 .main-top .functionBtn button i {
   font-size: 3vh;
 }
+
+.myProfile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  margin: 1vh;
+  padding-bottom: 1vh;
+}
 .friendsProfile {
   display: flex;
   flex-direction: row;
   align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 1vh;
 }
-
+.myProfile img,
+.friendsProfile img {
+  border-radius: 15px;
+  width: 16vw;
+  height: 8vh;
+}
+.myProfile .nickName,
 .friendsProfile .nickName {
   margin-left: 10px;
 }

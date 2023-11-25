@@ -15,7 +15,7 @@ echo '<div class="main-top">
       </div>';
 echo '<div class="main-middle">
         <div class="profile">
-          <div class="profile__column profile">';
+          <div class="profile__column profileImg">';
 if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
   echo '<img src="PROFILE/' . $_SESSION['id'] . '.jpeg"/>';
 } else {
@@ -28,7 +28,7 @@ echo '<h2>' . $_SESSION["id"] . '</h2>
             <span>9999!! </span>
           </div>
         </div>';
-echo "<hr>";
+// echo "<hr>";
 echo '<div class="setArea">
         <div class="setArea-money">
           <div class="setArea-myMoney">

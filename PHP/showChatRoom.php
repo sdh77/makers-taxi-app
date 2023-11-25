@@ -35,15 +35,15 @@ if ($chatLists) {
                     <p class='chatList-chatid'>" . $chatList['chatid'] . "</p>
                   </div>";
       if (in_array($chatList['chatid'], $myLikeChatLists))
-        echo "<button class='chatList-deleteLikeBtn'>🩷</button>";
+        echo "<button class='chatList-deleteLikeBtn'><i class='fa-solid fa-heart'></i></button>";
       else
-        echo "<button class='chatList-LikeBtn'>🩶</button>";
+        echo "<button class='chatList-LikeBtn'><i class='fa-solid fa-heart'></i></button>";
       echo "</div>
                 <div class='row chatList-row'>
                   <div class='row'>
-                    <p>" . $chatList['startarea'] . "</p>
-                    <p> -> </p>
-                    <p>" . $chatList['goalarea'] . "</p>
+                    <p>" . $chatList['startarea'] . "&nbsp;</p>
+                    <i class='fa-solid fa-arrow-right'></i>
+                    <p>&nbsp;" . $chatList['goalarea'] . "</p>
                   </div>
                   <div class='row'>
                     <p>" . $chatList['defaultnum'] . "</p>

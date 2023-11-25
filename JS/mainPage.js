@@ -68,7 +68,7 @@ function friendPlus() {
 }
 
 function deleteLike(event) {
-  const thisChatId = event.target.parentElement.querySelector(
+  const thisChatId = event.target.parentElement.parentElement.querySelector(
     ".chatList-timeTitle .chatList-chatid"
   ).innerHTML;
   console.log(thisChatId);
@@ -81,7 +81,7 @@ function deleteLike(event) {
   setTimeout(updateChatList, 100);
 }
 function Like(event) {
-  const thisChatId = event.target.parentElement.querySelector(
+  const thisChatId = event.target.parentElement.parentElement.querySelector(
     ".chatList-timeTitle .chatList-chatid"
   ).innerHTML;
   console.log(thisChatId);
@@ -95,7 +95,7 @@ function Like(event) {
 }
 
 function updateFriendList() {
-  $.ajax({ url: "PHP/friends.php", type: "post" }).done(function (data) {
+  $.ajax({ url: "PHP/showFriends.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
     bellBtn = document.querySelector(".functionBtn_bell");
     plusBtn = document.querySelector(".functionBtn_plus");
@@ -113,7 +113,7 @@ function updateFriendList() {
 }
 
 function updateChatList() {
-  $.ajax({ url: "PHP/chatRoom.php", type: "post" }).done(function (data) {
+  $.ajax({ url: "PHP/showChatRoom.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
     plusBtn = document.querySelector(".functionBtn_plus");
     reloadBtn = document.querySelector(".functionBtn_reload");
@@ -153,6 +153,13 @@ window.onclick = function (event) {
   ) {
     addChatForm.classList.add("popup-hide");
     addChatForm.classList.remove("popup-visible");
+    const timeTxt = document.querySelector(".addChat-EndTime");
+    const timeVal = document.querySelector(".addChat-tiemtxt");
+    const ErrorTimeTxt = document.querySelector(".time-Error");
+    timeVal.classList.remove("border-bottom-red");
+    timeTxt.classList.remove("border-bottom-red");
+    ErrorTimeTxt.classList.remove("Error-visible");
+    ErrorTimeTxt.classList.add("Error-hide");
   } else if (event.target == chargeMoneyForm) {
     chargeMoneyForm.classList.add("popup-hide");
     chargeMoneyForm.classList.remove("popup-visible");
@@ -263,7 +270,7 @@ function chargeMoney(event) {
     chargeMoney: event.target.innerHTML,
   };
   $.ajax({
-    url: "PHP/chargeMoney.php",
+    url: "PHP/addMoney.php",
     type: "post",
     data: chargeMoneyData,
   });
