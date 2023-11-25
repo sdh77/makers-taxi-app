@@ -5,11 +5,21 @@ const http = require("http");
 const server = http.createServer(app);
 const socketIO = require("socket.io");
 const moment = require("moment");
+const { Client } = require("pg");
 const io = socketIO(server, {
   cors: {
     origin: "*", // 또는 특정 도메인을 명시
   },
 });
+const client = new Client({
+  user: "sanggeukz",
+  host: "127.0.0.1",
+  database: "tanyang",
+  password: "taxi",
+  port: 5432,
+});
+
+client.connect();
 
 // 정적 파일 제공
 app.use(express.static(path.join(__dirname, "src")));
