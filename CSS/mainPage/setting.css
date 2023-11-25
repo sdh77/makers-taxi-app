@@ -42,6 +42,8 @@
 .setArea {
   font-size: 3vh;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .setArea-money {
   border: 1px solid black;
@@ -84,13 +86,19 @@
   border: none;
   font-size: 3vh;
   background-color: transparent;
+  text-align: left;
 }
-.setArea-totalMoney {
+.setArea-consumptionAmount {
   padding: 10px 0;
+  border: none;
+  font-size: 3vh;
+  background-color: transparent;
+  text-align: left;
 }
 .setArea-logout {
   padding: 10px 0;
   font-size: 3vh;
   border: none;
   background-color: transparent;
+  text-align: left;
 }

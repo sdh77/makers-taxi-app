@@ -14,6 +14,7 @@
 @import "mainPage/friends.css";
 @import "mainPage/chat.css";
 @import "mainPage/notice.css";
+@import "mainPage/consumptionAmount.css";
 
 @import "component/rowColumn.css";
 @import "component/backBtn.css";

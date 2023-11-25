@@ -42,6 +42,9 @@ function showSetting() {
     const moneyBtns = document.querySelectorAll(".chargeMoney-selectMoney");
     const sendMoneyBtn = document.querySelector(".setArea-sendMoney");
     const noticeBtn = document.querySelector(".setArea-announcement");
+    const consumptionAmount = document.querySelector(
+      ".setArea-consumptionAmount"
+    );
     logOutBtn.addEventListener("click", logOut);
     chargeMoneyBtn.addEventListener("click", showChargeMoneyPopup);
     moneyBtns.forEach(function (moneyBtn) {
@@ -49,6 +52,7 @@ function showSetting() {
     });
     sendMoneyBtn.addEventListener("click", sendMoney);
     noticeBtn.addEventListener("click", showNotice);
+    consumptionAmount.addEventListener("click", showConsumptionAmount);
   });
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.remove("click");
@@ -111,10 +115,15 @@ function updateFriendList() {
     });
   });
 }
-
 function updateChatList() {
   $.ajax({ url: "PHP/showChatRoom.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
+    const reloadEmoji = document.querySelector(".fa-rotate");
+    reloadEmoji.classList.add("fa-");
+    spin;
+    setTimeout(function () {
+      reloadEmoji.classList.remove("fa-spin");
+    }, 1000);
     plusBtn = document.querySelector(".functionBtn_plus");
     reloadBtn = document.querySelector(".functionBtn_reload");
     plusBtn.addEventListener("click", chatPlus);
@@ -295,6 +304,17 @@ function showNotice() {
     main_topMiddle.innerHTML = data;
     const noticeCloseBtn = document.querySelector(".notice-closeBtn");
     noticeCloseBtn.addEventListener("click", showSetting);
+  });
+}
+function showConsumptionAmount() {
+  $.ajax({ url: "PHP/showConsumptionAmount.php", type: "post" }).done(function (
+    data
+  ) {
+    main_topMiddle.innerHTML = data;
+    const consumptionAmountCloseBtn = document.querySelector(
+      ".consumptionAmount-closeBtn"
+    );
+    consumptionAmountCloseBtn.addEventListener("click", showSetting);
   });
 }
 friends.addEventListener("click", showFriends);

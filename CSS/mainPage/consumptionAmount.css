@@ -1,0 +1,27 @@
+.consumptionAmount-closeBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 3vh;
+  margin-right: 10px;
+}
+.consumptionAmount-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+}
+.consumptionAmount-enter,
+.consumptionAmount-make {
+  width: 50%;
+  text-align: center;
+  font-size: 3vh;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+.consumptionAmount-click {
+  background-color: var(--button-color-click);
+}

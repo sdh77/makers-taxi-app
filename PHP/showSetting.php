@@ -43,9 +43,9 @@ echo '<div class="setArea">
 echo '  <button class="setArea-announcement">
           공지사항
         </button>
-        <div class="setArea-totalMoney">
+        <button class="setArea-consumptionAmount">
           이용 내역
-        </div>
+        </button>
         <button class="setArea-logout">
           로그아웃
         </button>';
