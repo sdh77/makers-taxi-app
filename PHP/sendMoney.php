@@ -8,7 +8,7 @@ $idList = pg_query($conn, $searchIdSql);
 if ($idList) {
   if (pg_num_rows($idList) > 0) {
     while ($existingMoney = pg_fetch_assoc($idList)) {
-      if ($existingMoney['money'] > $sendMoney) {
+      if ($existingMoney['money'] >= $sendMoney) {
         $newMoney = $existingMoney['money'] - $sendMoney;
         echo $newMoney;
         $sendMoneySql = "update user_money set money = " . $newMoney . " where id = '" . $myId . "'";

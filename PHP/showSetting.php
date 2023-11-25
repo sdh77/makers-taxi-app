@@ -9,6 +9,8 @@ if ($moneyList) {
   if (pg_num_rows($moneyList) > 0)
     while ($moneyData = pg_fetch_assoc($moneyList))
       $money = $moneyData['money'];
+  else
+    $money = 0;
 }
 echo '<div class="main-top">
         <p>Setting</p>
