@@ -35,18 +35,20 @@ function showChatRoom() {
 }
 
 function showSetting() {
-  $.ajax({ url: "PHP/setting.php", type: "post" }).done(function (data) {
+  $.ajax({ url: "PHP/showSetting.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
     const logOutBtn = document.querySelector(".setArea-logout");
     const chargeMoneyBtn = document.querySelector(".setArea-chargeMoney");
     const moneyBtns = document.querySelectorAll(".chargeMoney-selectMoney");
     const sendMoneyBtn = document.querySelector(".setArea-sendMoney");
+    const noticeBtn = document.querySelector(".setArea-announcement");
     logOutBtn.addEventListener("click", logOut);
     chargeMoneyBtn.addEventListener("click", showChargeMoneyPopup);
     moneyBtns.forEach(function (moneyBtn) {
       moneyBtn.addEventListener("click", chargeMoney);
     });
     sendMoneyBtn.addEventListener("click", sendMoney);
+    noticeBtn.addEventListener("click", showNotice);
   });
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.remove("click");
@@ -280,6 +282,13 @@ function sendMoney() {
     data: sendMoneyData,
   });
   setTimeout(showSetting, 100);
+}
+function showNotice() {
+  $.ajax({ url: "PHP/showNotice.php", type: "post" }).done(function (data) {
+    main_topMiddle.innerHTML = data;
+    const noticeCloseBtn = document.querySelector(".notice-closeBtn");
+    noticeCloseBtn.addEventListener("click", showSetting);
+  });
 }
 friends.addEventListener("click", showFriends);
 chatRoom.addEventListener("click", showChatRoom);

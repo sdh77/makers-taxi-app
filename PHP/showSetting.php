@@ -40,9 +40,9 @@ echo '<div class="setArea">
             <button class="setArea-sendMoney">출금</button>
           </div>
         </div>';
-echo '  <div class="setArea-announcement">
+echo '  <button class="setArea-announcement">
           공지사항
-        </div>
+        </button>
         <div class="setArea-totalMoney">
           이용 내역
         </div>

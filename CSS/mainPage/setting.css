@@ -74,6 +74,9 @@
 }
 .setArea-announcement {
   padding: 10px 0;
+  border: none;
+  font-size: 3vh;
+  background-color: transparent;
 }
 .setArea-totalMoney {
   padding: 10px 0;

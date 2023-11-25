@@ -42,7 +42,7 @@ if ($result) {
         </script>";
   }
 }
-echo $sql;
+// echo $sql;
 
 pg_close($conn);
 //db연결 종료

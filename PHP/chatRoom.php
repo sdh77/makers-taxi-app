@@ -62,4 +62,3 @@ echo "</div>";
 pg_close($conn);
 
 ?>
-<button> </button>

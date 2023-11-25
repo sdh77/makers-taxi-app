@@ -1,0 +1,29 @@
+.notice-closeBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 4vh;
+  margin-right: 10px;
+}
+.notice-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.notice-row {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 10px 0;
+  justify-content: space-between;
+  font-size: 2vh;
+}
+.notice-txt {
+  display: flex;
+  flex-direction: row;
+}
+.notice-txt .fa-solid {
+  margin: 0 10px 0 0;
+}
+.notice-date {
+  width: auto;
+}
