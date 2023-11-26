@@ -177,6 +177,7 @@ if (isset($_SESSION["id"])) {
   <script src="JS/AddFriend.js"></script>
   <script src="JS/AddChat.js"></script>
   <script src="JS/sendMoney.js"></script>
+  <script src="JS/chat.js"></script>
   
   
 </body>

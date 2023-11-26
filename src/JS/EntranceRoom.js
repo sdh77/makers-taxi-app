@@ -4,7 +4,7 @@ function EntranceChat(event) {
   const EntranceChatPopup = document.querySelector("#EntranceRoomForm");
   EntranceChatPopup.classList.add("popup-visible");
   EntranceChatPopup.classList.remove("popup-hide");
-  const EntraceChatTxt = document.querySelector("#EntranceRoomBody");
+  const EntranceChatTxt = document.querySelector("#EntranceRoomBody");
   const chatInfo = {
     chatId: chatId,
   };
@@ -13,10 +13,17 @@ function EntranceChat(event) {
     type: "post",
     data: chatInfo,
   }).done(function (data) {
-    EntraceChatTxt.innerHTML = data;
+    EntranceChatTxt.innerHTML = data;
+    const EntranceChatBtn = document.querySelector(".EntranceRoom-chat");
+    EntranceChatBtn.addEventListener("click", enterRoom);
   });
+}
 
-  /*
+function enterRoom() {
+  console.log("asd");
+}
+
+/*
   const chatArea = document.querySelector(".main-topMiddle");
   const chatInfo = {
     chatId: chatId,
@@ -28,4 +35,3 @@ function EntranceChat(event) {
     }
   );
   */
-}

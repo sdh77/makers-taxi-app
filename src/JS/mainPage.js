@@ -40,6 +40,7 @@ function showChatRoom() {
 function showSetting() {
   $.ajax({ url: "PHP/showSetting.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
+
     const logOutBtn = document.querySelector(".setArea-logout");
     const chargeMoneyBtn = document.querySelector(".setArea-chargeMoney");
     const moneyBtns = document.querySelectorAll(".chargeMoney-selectMoney");

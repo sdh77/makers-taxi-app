@@ -311,7 +311,7 @@
   margin: 5px 0;
   font-size: 3vh;
 }
-ㄴ .EntranceRoom-chat {
+.EntranceRoom-chat {
   border: none;
   background-color: var(--button-color-click);
   width: 60vw;
