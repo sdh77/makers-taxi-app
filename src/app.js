@@ -1,3 +1,4 @@
+// app.js
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -19,42 +20,31 @@ const client = new Client({
   port: 5432,
 });
 
-client.connect();
-
-// 정적 파일 제공
-app.use(express.static(path.join(__dirname, "src")));
-
-// 클라이언트에게 LiModel을 전달
 io.on("connection", (socket) => {
-  // LiModel 객체를 직접 전송
   socket.emit("getLiModel", {
-    // chatid: "default",
     name: "default",
     msg: "default",
     time: "default",
   });
 
-  // 클라이언트로부터 채팅 메시지를 받았을 때
   socket.on("chatting", async (data) => {
-    const { name, msg } = data;
+    const { name, msg, chatId } = data;
     const formattedTime = moment().format("h:mm A");
 
     try {
-      // PostgreSQL에 데이터 삽입
-
       const query = {
         text: "INSERT INTO chats (name, msg, chatid) VALUES ($1, $2, $3) RETURNING *",
-        values: [name, msg, chatid],
+        values: [name, msg, chatId],
       };
 
       const result = await client.query(query);
       const insertedChat = result.rows[0];
 
-      // 채팅 메시지를 클라이언트로 전송
       io.emit("chatting", {
         name: insertedChat.name,
         msg: insertedChat.msg,
         time: insertedChat.time,
+        chatId: chatId, // chatid 추가
       });
     } catch (error) {
       console.error("Error inserting chat into database:", error.message);

@@ -17,7 +17,7 @@ if ($chatDatas) {
       </div>
       <div class="EntranceRoom-member">' . $chatData['membernum'] . '명 중 ' . $chatData['defaultnum'] . '명</div>
       <div class="EntranceRoom-meetTime">' . $chatData['endtime'] . ' 집결</div>
-      <div class="hide">' . $chatId . '</div>
+      <div class="EntranceRoom-chatId hide">' . $chatId . '</div>
       <button class="EntranceRoom-chat">입장</button>
       ';
     }

@@ -1,9 +1,11 @@
 <?php
+$chatId = $_POST['chatId'];
 echo'
 <div class="wrapper">
     <div class="user-container">
       <label for="nickname">대화명</label>
       <input type="text" id="nickname" />
+      <div class="chatRoom-chatId hide">'.$chatId.'</div>
     </div>
     <div class="display-container">
       <ul class="chatting-list">

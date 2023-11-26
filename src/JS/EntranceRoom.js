@@ -20,15 +20,22 @@ function EntranceChat(event) {
   });
 }
 
+// chat.js
 function enterRoom() {
+  const chatId = document
+    .querySelector(".EntranceRoom-chatId")
+    .textContent.trim();
+  const chatInfo = {
+    chatId: chatId,
+  };
+
   $.ajax({
     url: "PHP/showChatRoom.php",
     type: "post",
-    // data: chatInfo,
+    data: chatInfo,
   }).done(function (data) {
     main_topMiddle.innerHTML = data;
 
-    /* chat.js */
     ("use strict");
 
     class LiModel {
@@ -42,11 +49,11 @@ function enterRoom() {
         const li = document.createElement("li");
         li.classList.add(nickname.value === this.name ? "sent" : "received");
         const dom = `<span class="profile">
-      <span class="user">${this.name}</span>
-      <img class="image" src="https://placeimg.com/50/50/any" alt="any" />
-    </span>
-    <span class="message">${this.msg}</span>
-    <span class="time">${this.time}</span>`;
+          <span class="user">${this.name}</span>
+          <img class="image" src="https://placeimg.com/50/50/any" alt="any" />
+        </span>
+        <span class="message">${this.msg}</span>
+        <span class="time">${this.time}</span>`;
         li.innerHTML = dom;
         chatList.appendChild(li);
       }
@@ -58,9 +65,8 @@ function enterRoom() {
     });
 
     let liModelInstance;
-    const displayContainer = document.querySelector(".display-container"); // displayContainer 추가
+    const displayContainer = document.querySelector(".display-container");
 
-    // 서버로부터 LiModel을 받아오기
     socket.on("getLiModel", (receivedLiModel) => {
       liModelInstance = new LiModel(
         receivedLiModel.name,
@@ -68,7 +74,6 @@ function enterRoom() {
         receivedLiModel.time
       );
 
-      // LiModel을 받아왔으면 이제 채팅 메시지를 받을 수 있도록 리스너 등록
       socket.on("chatting", (data) => {
         appendChatMessage(data);
       });
@@ -84,6 +89,7 @@ function enterRoom() {
         name: nickname.value,
         msg: chatInput.value,
         time: new Date().toLocaleTimeString(),
+        chatId: chatId,
       };
       socket.emit("chatting", param);
     });
@@ -94,7 +100,6 @@ function enterRoom() {
         return;
       }
 
-      // LiModel 클래스를 사용하여 객체 생성
       const liModel = new LiModel(data.name, data.msg, data.time);
       liModel.makeLi();
       scrollToBottom();
@@ -103,9 +108,6 @@ function enterRoom() {
     function scrollToBottom() {
       displayContainer.scrollTo(0, displayContainer.scrollHeight);
     }
-
-    // const EntranceChatBtn = document.querySelector(".EntranceRoom-chat");
-    // EntranceChatBtn.addEventListener("click", enterRoom);
   });
   EntranceChatPopup.classList.remove("popup-visible");
   EntranceChatPopup.classList.add("popup-hide");
