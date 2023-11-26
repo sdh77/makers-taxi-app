@@ -3,32 +3,34 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="CSS/style.css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
-  <title>채팅 앱</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>초기화면</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="user-container">
-      <label for="nickname">대화명</label>
-      <input type="text" id="nickname" />
+  <div class="loadingScreen"></div>
+  <div class="firstPage">
+    <div class="firstPage_img">
+      <img class="logo" src="https://pimg.designhouse.co.kr/cms/contents/direct/info_id/45267/1220841607201.jpg"></img>
     </div>
-    <div class="display-container">
-      <ul class="chatting-list">
-        <!-- 채팅하나씩 li로 집어 넣을 것 -->
-      </ul>
-    </div>
-    <div class="input-container">
-      <span>
-        <input type="text" class="chatting-input" />
-        <button class="send-button">전송</button>
-      </span>
+    <div class="firstPage_btn">
+      <a href="loginPage.html"><button>Login</button></a>
+      <a href="signUp.html"><button>Join</button></a>
     </div>
   </div>
-  <script src="js/chat.js"></script>
+  <script>
+    const hide = document.location.href.split("?");
+    console.log(hide);
+    function hideAction() {
+      document.querySelector(".loadingScreen").classList.add("hide");
+    }
+    if (hide[1] == "yes") {
+      hideAction();
+    }
+    setTimeout(hideAction, 2000);
+
+  </script>
 </body>
 
 </html>
