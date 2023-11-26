@@ -1,4 +1,3 @@
-// app.js
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -6,13 +5,15 @@ const http = require("http");
 const server = http.createServer(app);
 const socketIO = require("socket.io");
 const moment = require("moment");
-const { Client } = require("pg");
+const { Pool } = require("pg");
+
 const io = socketIO(server, {
   cors: {
     origin: "*", // 또는 특정 도메인을 명시
   },
 });
-const client = new Client({
+
+const pool = new Pool({
   user: "sanggeukz",
   host: "127.0.0.1",
   database: "tanyang",
@@ -28,23 +29,26 @@ io.on("connection", (socket) => {
   });
 
   socket.on("chatting", async (data) => {
-    const { name, msg, chatId } = data;
-    const formattedTime = moment().format("h:mm A");
-
     try {
-      const query = {
-        text: "INSERT INTO chats (name, msg, chatid) VALUES ($1, $2, $3) RETURNING *",
-        values: [name, msg, chatId],
-      };
+      const { name, msg, chatId } = data;
+      const formattedTime = moment().format("h:mm A");
 
-      const result = await client.query(query);
+      const result = await pool.query(
+        "INSERT INTO chats (id, msg, chatid) VALUES ($1, $2, $3) RETURNING *",
+        [name, msg, chatId]
+      );
       const insertedChat = result.rows[0];
 
+      if (!insertedChat) {
+        console.error("Error: No chat inserted into the database");
+        return;
+      }
+
       io.emit("chatting", {
-        name: insertedChat.name,
+        name: insertedChat.id, // 여기서 name을 id로 변경
         msg: insertedChat.msg,
-        time: insertedChat.time,
-        chatId: chatId, // chatid 추가
+        time: formattedTime,
+        chatId: chatId,
       });
     } catch (error) {
       console.error("Error inserting chat into database:", error.message);

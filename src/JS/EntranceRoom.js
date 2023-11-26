@@ -89,8 +89,9 @@ function enterRoom() {
         name: nickname.value,
         msg: chatInput.value,
         time: new Date().toLocaleTimeString(),
-        chatId: chatId,
+        chatId: Number(chatId),
       };
+      console.log(param);
       socket.emit("chatting", param);
     });
 
@@ -111,18 +112,4 @@ function enterRoom() {
   });
   EntranceChatPopup.classList.remove("popup-visible");
   EntranceChatPopup.classList.add("popup-hide");
-  console.log("asd");
 }
-
-/*
-  const chatArea = document.querySelector(".main-topMiddle");
-  const chatInfo = {
-    chatId: chatId,
-  };
-  console.log(chatInfo);
-  $.ajax({ url: "PHP/EntraceChat.php", type: "post", data: chatInfo }).done(
-    function (data) {
-      chatArea.innerHTML = data;
-    }
-  );
-  */
