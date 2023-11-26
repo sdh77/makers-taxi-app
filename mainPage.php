@@ -137,11 +137,37 @@ if (isset($_SESSION["id"])) {
           <button class="chargeMoney-selectMoney">10000원</button>
           <button class="chargeMoney-selectMoney">5000원</button>
           <button class="chargeMoney-selectMoney">1000원</button>
-          <button class="chargeMoney-selectMoney">직접입력</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div id="sendMoneyForm" class="popup popup-hide">
+    <div id="modalContent">
+      <div id="sendMoneyBody">
+        <div class="sendMoneyBody-header">금액 입력</div>
+        <hr>
+        <input type="number" class="sendMoneyBody-inputMoney">
+        <div class="Over-Error Error-txt Error-hide">입력하신 금액이 보유 잔고보다 많습니다.</div>
+        <div class="Zero-Error Error-txt Error-hide">입력하신 금액이 0원 입니다.</div>
+
+        <div class="sendMoneyBody-moneyBtn">
+          <button class="sendMoneyBody-allMoney">전부</button>
+          <button class="sendMoneyBody-50000">5만원</button>
+          <button class="sendMoneyBody-10000">1만원</button>
+        </div>
+        <button class="sendMoneyBody-sendBtn">보내기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="EntranceRoomForm" class="popup popup-hide">
+    <div id="modalContent">
+      <div id="EntranceRoomBody">        
+      </div>
+    </div>
+  </div>
+
   <div class="hideMy-id">' . $_SESSION['id'] . '</div>
 
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>
@@ -150,6 +176,8 @@ if (isset($_SESSION["id"])) {
   <script src="JS/mainPage.js"></script>
   <script src="JS/AddFriend.js"></script>
   <script src="JS/AddChat.js"></script>
+  <script src="JS/sendMoney.js"></script>
+  
   
 </body>
 

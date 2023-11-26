@@ -6,11 +6,14 @@ const addFriendFormInputText = document.querySelector(".plusFriend-id");
 const bellFriendForm = document.getElementById("bellFriendForm");
 const addChatForm = document.getElementById("addChatForm");
 const friendManagementForm = document.getElementById("friendManagementForm");
+const EntranceChatForm = document.getElementById("EntranceRoomForm");
+const chargeMoneyForm = document.getElementById("chargeMoneyForm");
+const sendMoneyForm = document.getElementById("sendMoneyForm");
+
 const bellFormClose = document.querySelector(".bellFriendFrom-closeUp");
 const bellFormCloseImg = document.querySelector(".bellFriendFrom-closeUp img");
 const addChatFormClose = document.querySelector(".addChatForm-closeUp");
 const addChatFormCloseImg = document.querySelector(".addChatForm-closeUp img");
-const chargeMoneyForm = document.getElementById("chargeMoneyForm");
 const bellFriendMainText = document.querySelector(".bellFriend");
 const addChatMainText = document.querySelector(".addChat");
 const friendManagementText = document.querySelector(".friendManagement");
@@ -50,7 +53,7 @@ function showSetting() {
     moneyBtns.forEach(function (moneyBtn) {
       moneyBtn.addEventListener("click", chargeMoney);
     });
-    sendMoneyBtn.addEventListener("click", sendMoney);
+    sendMoneyBtn.addEventListener("click", sendMoneyPopup);
     noticeBtn.addEventListener("click", showNotice);
     consumptionAmount.addEventListener("click", showConsumptionAmount);
   });
@@ -62,6 +65,7 @@ function showSetting() {
 function chatPlus() {
   addChatForm.classList.add("popup-visible");
   addChatForm.classList.remove("popup-hide");
+  document.querySelector(".addChat-chatName").focus();
   console.log("plus");
 }
 
@@ -119,8 +123,8 @@ function updateChatList() {
   $.ajax({ url: "PHP/showChatRoom.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;
     const reloadEmoji = document.querySelector(".fa-rotate");
-    reloadEmoji.classList.add("fa-");
-    spin;
+    reloadEmoji.classList.add("fa-spin");
+
     setTimeout(function () {
       reloadEmoji.classList.remove("fa-spin");
     }, 1000);
@@ -172,6 +176,12 @@ window.onclick = function (event) {
   } else if (event.target == chargeMoneyForm) {
     chargeMoneyForm.classList.add("popup-hide");
     chargeMoneyForm.classList.remove("popup-visible");
+  } else if (event.target == EntranceChatForm) {
+    EntranceChatForm.classList.add("popup-hide");
+    EntranceChatForm.classList.remove("popup-visible");
+  } else if (event.target == sendMoneyForm) {
+    sendMoneyForm.classList.add("popup-hide");
+    sendMoneyForm.classList.remove("popup-visible");
   }
 };
 
@@ -287,18 +297,12 @@ function chargeMoney(event) {
   chargeMoneyForm.classList.remove("popup-visible");
   setTimeout(showSetting, 100);
 }
-function sendMoney() {
-  const sendMoneyData = {
-    myId: myId,
-    sendMoney: 1000,
-  };
-  $.ajax({
-    url: "PHP/sendMoney.php",
-    type: "post",
-    data: sendMoneyData,
-  });
-  setTimeout(showSetting, 100);
+function sendMoneyPopup() {
+  sendMoneyForm.classList.add("popup-visible");
+  sendMoneyForm.classList.remove("popup-hide");
+  document.querySelector(".sendMoneyBody-inputMoney").focus();
 }
+
 function showNotice() {
   $.ajax({ url: "PHP/showNotice.php", type: "post" }).done(function (data) {
     main_topMiddle.innerHTML = data;

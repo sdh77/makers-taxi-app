@@ -52,7 +52,7 @@ if ($chatLists) {
                   </div>
                 </div>
                 <button class='chatList-Entrance'>
-                  <p>입장</p>
+                  입장
                 </button>
             </div>";
     }

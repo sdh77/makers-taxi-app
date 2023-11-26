@@ -3,7 +3,16 @@
   align-items: center;
   margin-left: 10px;
 }
-
+.Over-Error {
+  font-size: 2vh;
+  align-items: center;
+  margin-left: 5%;
+}
+.Zero-Error {
+  font-size: 2vh;
+  align-items: center;
+  margin-left: 5%;
+}
 .Error-txt {
   color: red;
 }

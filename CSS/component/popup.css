@@ -222,3 +222,101 @@
   background-color: transparent;
   font-size: 3vh;
 }
+
+/*********************************************/
+/*******************송금 CSS*******************/
+/*********************************************/
+
+#sendMoneyBody {
+  position: absolute;
+  top: 50vh;
+  width: 100vw;
+  height: 50vh;
+  border: none;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.sendMoneyBody-header {
+  font-size: 4vh;
+  margin: 2vh 5vw;
+}
+.sendMoneyBody-inputMoney {
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
+  font-size: 3vh;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 90%;
+  margin: 0 5%;
+}
+
+.sendMoneyBody-inputMoney::-webkit-outer-spin-button,
+.sendMoneyBody-inputMoney::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sendMoneyBody-moneyBtn {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 10px 5%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.sendMoneyBody-allMoney {
+  border: none;
+  font-size: 2vh;
+  width: 33.3%;
+}
+.sendMoneyBody-50000 {
+  border: none;
+  font-size: 2vh;
+  width: 33.4%;
+}
+
+.sendMoneyBody-10000 {
+  border: none;
+  font-size: 2vh;
+  width: 33.3%;
+}
+.sendMoneyBody-sendBtn {
+  border: none;
+  width: 90%;
+  margin: 0 5%;
+  font-size: 2vh;
+}
+/*********************************************/
+/****************채팅방 입장 CSS*****************/
+/*********************************************/
+
+#EntranceRoomBody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+.EntranceRoom-title {
+  font-size: 4vh;
+  margin-bottom: 10px;
+}
+.EntranceRoom-meetTime,
+.EntranceRoom-member,
+#EntranceRoomBody .row {
+  margin: 5px 0;
+  font-size: 3vh;
+}
+ㄴ .EntranceRoom-chat {
+  border: none;
+  background-color: var(--button-color-click);
+  width: 60vw;
+  font-size: 3vh;
+  position: absolute;
+  bottom: 5%;
+  padding: 1vh 0;
+}
