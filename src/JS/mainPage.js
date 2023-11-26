@@ -121,7 +121,9 @@ function updateFriendList() {
   });
 }
 function updateChatList() {
-  $.ajax({ url: "PHP/showChatRoom.php", type: "post" }).done(function (data) {
+  $.ajax({ url: "PHP/showChatRoomList.php", type: "post" }).done(function (
+    data
+  ) {
     main_topMiddle.innerHTML = data;
     const reloadEmoji = document.querySelector(".fa-rotate");
     reloadEmoji.classList.add("fa-spin");

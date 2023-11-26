@@ -7,6 +7,7 @@ if (isset($_SESSION["id"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
   <title>기능 화면</title>
   <link rel="stylesheet" href="CSS/styles.css" />
 </head>
@@ -177,7 +178,6 @@ if (isset($_SESSION["id"])) {
   <script src="JS/AddFriend.js"></script>
   <script src="JS/AddChat.js"></script>
   <script src="JS/sendMoney.js"></script>
-  <script src="JS/chat.js"></script>
   
   
 </body>
