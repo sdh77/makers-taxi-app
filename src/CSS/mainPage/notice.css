@@ -15,15 +15,26 @@
   width: 90%;
   margin: 10px 0;
   justify-content: space-between;
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 .notice-txt {
   display: flex;
   flex-direction: row;
+  width: 65%;
 }
 .notice-txt .fa-solid {
-  margin: 0 10px 0 0;
+  width: 15%;
+}
+.notice-title {
+  width: 20%;
+}
+.notice-title__txt {
+  width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .notice-date {
-  width: auto;
+  text-align: right;
+  width: 35%;
 }
