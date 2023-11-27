@@ -27,6 +27,12 @@ function EntranceChat(event) {
 }
 
 // chat.js
+
+const socket = io("http://localhost:3000", {
+  transports: ["websocket"],
+  cors: { origin: "*" },
+});
+
 function enterRoom() {
   let chatId;
   if (!localStorage.getItem("enterRoom")) {
@@ -51,6 +57,9 @@ function enterRoom() {
     chatExitBtn.addEventListener("click", ExitChat);
     calculateBtn.addEventListener("click", showCalculatePopup);
     ("use strict");
+
+    // socket.emit("enterRoom", chatId);
+    updateSocket(chatId);
 
     class LiModel {
       constructor(name, msg, time) {
@@ -92,15 +101,25 @@ function enterRoom() {
       }
     }
 
-    const socket = io("http://localhost:3000", {
-      transports: ["websocket"],
-      cors: { origin: "*" },
-    });
+    // const socket = io("http://localhost:3000", {
+    //   transports: ["websocket"],
+    //   cors: { origin: "*" },
+    // });
 
+    function updateSocket(newChatId) {
+      socket.disconnect();
+      socket.connect({ query: { chatId: newChatId } });
+
+      // 소켓을 다시 연결한 후 "enterRoom" 이벤트를 발생시킵니다.
+      socket.emit("enterRoom", Number(newChatId));
+      console.log("enterRoom event emitted with chatId:", newChatId);
+    }
+    console.log(chatId);
     let liModelInstance;
     const displayContainer = document.querySelector(".display-container");
 
     socket.on("getLiModel", (receivedLiModel) => {
+      console.log("Received getLiModel event:", receivedLiModel);
       liModelInstance = new LiModel(
         receivedLiModel.name,
         receivedLiModel.msg,
