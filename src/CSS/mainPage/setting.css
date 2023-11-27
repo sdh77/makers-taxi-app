@@ -1,4 +1,4 @@
-.profile {
+.setProfile {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,11 +24,11 @@
   height: 8vh;
 }
 
-.profile {
+.setProfile {
   align-items: center;
 }
 
-.profile h2 {
+.setProfile h2 {
   margin-left: 2vw;
 }
 

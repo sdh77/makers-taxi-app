@@ -168,7 +168,15 @@ if (isset($_SESSION["id"])) {
       </div>
     </div>
   </div>
-
+  <div id="CalculateForm" class="popup popup-hide">
+    <div id="modalContent">
+      <div id="CalculateBody">
+        <div class="CalculateBody-header">정산금</div>
+        <input type="number" class="CalculateBody-taxiFare"></input>
+        <button class="CalculateBody-calculateMoney">정산하기</button>        
+      </div>
+    </div>
+  </div>
   <div class="hideMy-id">' . $_SESSION['id'] . '</div>
 
   <script src="https://kit.fontawesome.com/8a7266dac6.js" crossorigin="anonymous"></script>

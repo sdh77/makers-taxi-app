@@ -16,7 +16,7 @@ echo '<div class="main-top">
         <p>Setting</p>
       </div>';
 echo '<div class="main-middle">
-        <div class="profile">
+        <div class="setProfile">
           <div class="profile__column profileImg">';
 if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
   echo '<img src="PROFILE/' . $_SESSION['id'] . '.jpeg"/>';

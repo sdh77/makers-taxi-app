@@ -9,6 +9,7 @@ const friendManagementForm = document.getElementById("friendManagementForm");
 const EntranceChatForm = document.getElementById("EntranceRoomForm");
 const chargeMoneyForm = document.getElementById("chargeMoneyForm");
 const sendMoneyForm = document.getElementById("sendMoneyForm");
+const calculateForm = document.getElementById("CalculateForm");
 
 const bellFormClose = document.querySelector(".bellFriendFrom-closeUp");
 const bellFormCloseImg = document.querySelector(".bellFriendFrom-closeUp img");
@@ -31,7 +32,9 @@ function showFriends() {
 }
 
 function showChatRoom() {
-  updateChatList();
+  const nowChat = localStorage.getItem("enterRoom");
+  if (!nowChat) updateChatList();
+  else enterRoom();
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.add("click");
   setting.querySelector("i").classList.remove("click");
@@ -185,6 +188,9 @@ window.onclick = function (event) {
   } else if (event.target == sendMoneyForm) {
     sendMoneyForm.classList.add("popup-hide");
     sendMoneyForm.classList.remove("popup-visible");
+  } else if (event.target == calculateForm) {
+    calculateForm.classList.add("popup-hide");
+    calculateForm.classList.remove("popup-visible");
   }
 };
 

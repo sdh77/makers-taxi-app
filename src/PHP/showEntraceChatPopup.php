@@ -10,7 +10,8 @@ if ($chatDatas) {
   if (pg_num_rows($chatDatas) > 0) {
     while ($chatData = pg_fetch_assoc($chatDatas)) {
       echo '<div class="EntranceRoom-title">' . $chatData['chattitle'] . '</div>
-      <div class="row">
+        <button class="EntranceRoom-closeBtn"><i class="fa-solid fa-x"></i></button>
+        <div class="row">
        <p>' . $chatData["startarea"] . '&nbsp;</p>
         <i class="fa-solid fa-arrow-right"></i>
         <p>&nbsp;' . $chatData["goalarea"] . '</p>

@@ -46,6 +46,26 @@
   height: 100%;
 }
 
+.chatting-outBtn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 2vh;
+  padding: 10px;
+  border: none;
+  background-color: var(--white-blue-color);
+  border-radius: 20px;
+}
+.chatting-calculateBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 2vh;
+  padding: 10px;
+  border: none;
+  background-color: var(--white-blue-color);
+  border-radius: 20px;
+}
 .chatting-input {
   font-size: 14px;
   height: 100%;
@@ -62,7 +82,6 @@
   height: 100%;
   font-size: 2vh;
   width: 20vw;
-
 }
 
 .chatting-list li {

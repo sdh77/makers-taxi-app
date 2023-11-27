@@ -1,5 +1,7 @@
 const EntranceChatPopup = document.querySelector("#EntranceRoomForm");
-
+const sendCalculateBtn = document.querySelector(
+  ".CalculateBody-calculateMoney"
+);
 function EntranceChat(event) {
   const chatId =
     event.target.parentElement.querySelector(".chatList-chatid").innerHTML;
@@ -16,15 +18,23 @@ function EntranceChat(event) {
   }).done(function (data) {
     EntranceChatTxt.innerHTML = data;
     const EntranceChatBtn = document.querySelector(".EntranceRoom-chat");
+    const EntranceChatcloseBtn = document.querySelector(
+      ".EntranceRoom-closeBtn"
+    );
     EntranceChatBtn.addEventListener("click", enterRoom);
+    EntranceChatcloseBtn.addEventListener("click", EntranceRoomClose);
   });
 }
 
 // chat.js
 function enterRoom() {
-  const chatId = document
-    .querySelector(".EntranceRoom-chatId")
-    .textContent.trim();
+  let chatId;
+  if (!localStorage.getItem("enterRoom")) {
+    chatId = document.querySelector(".EntranceRoom-chatId").textContent.trim();
+    localStorage.setItem("enterRoom", chatId);
+  } else {
+    chatId = Number(localStorage.getItem("enterRoom"));
+  }
   const chatInfo = {
     chatId: chatId,
   };
@@ -35,7 +45,11 @@ function enterRoom() {
     data: chatInfo,
   }).done(function (data) {
     main_topMiddle.innerHTML = data;
+    const chatExitBtn = document.querySelector(".chatting-outBtn");
+    const calculateBtn = document.querySelector(".chatting-calculateBtn");
 
+    chatExitBtn.addEventListener("click", ExitChat);
+    calculateBtn.addEventListener("click", showCalculatePopup);
     ("use strict");
 
     class LiModel {
@@ -110,6 +124,35 @@ function enterRoom() {
       displayContainer.scrollTo(0, displayContainer.scrollHeight);
     }
   });
+
   EntranceChatPopup.classList.remove("popup-visible");
   EntranceChatPopup.classList.add("popup-hide");
 }
+
+function ExitChat() {
+  window.localStorage.removeItem("enterRoom");
+  showChatRoom();
+}
+function showCalculatePopup() {
+  calculateForm.classList.add("popup-visible");
+  calculateForm.classList.remove("popup-hide");
+}
+
+function sendCalculate() {
+  const taxiFare = Number(
+    document.querySelector(".CalculateBody-taxiFare").value
+  );
+  const fareDate = {
+    taxiFare: taxiFare,
+  };
+  $.ajax({
+    url: "PHP/calceMoney.php",
+    type: "post",
+    data: fareDate,
+  });
+}
+function EntranceRoomClose() {
+  EntranceChatForm.classList.add("popup-hide");
+  EntranceChatForm.classList.remove("popup-visible");
+}
+sendCalculateBtn.addEventListener("click", sendCalculate);
