@@ -43,6 +43,7 @@ if ($chatDatas) {
                 </li>';
 
               } else {
+                $date = date_create($messageData['time']);
                 echo '<li class="received">
                    <span class="profile">
                   <span class="user">' . $messageData['id'] . '</span>';
@@ -53,7 +54,7 @@ if ($chatDatas) {
                 }
                 echo '</span>
                 <span class="message">' . $messageData['msg'] . '</span>
-                <span class="time">' . substr($messageData['time'], 11, 5) . '</span>
+                <span class="time">' . date_format($date, "g:i a") . '</span>
               </li>';
               }
             }

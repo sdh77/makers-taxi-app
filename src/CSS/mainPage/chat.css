@@ -15,6 +15,9 @@
   font-size: 2.25vh;
   width: 90%;
 }
+.recruitmentCompleted {
+  opacity: 0.5;
+}
 
 .chatList-row {
   margin: 3px 0;
@@ -35,13 +38,16 @@
   border: none;
   background-color: transparent;
 }
+.chatList-deleteLikeBtnRecruitmentCompleted,
 .chatList-deleteLikeBtn {
   font-size: 2.5vh;
   color: red;
 }
+.chatList-LikeBtnRecruitmentCompleted,
 .chatList-LikeBtn {
   font-size: 2.5vh;
 }
+.chatList-recruitmentCompleted,
 .chatList-Entrance {
   position: absolute;
   right: 17%;

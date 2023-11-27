@@ -156,6 +156,7 @@ function enterRoom(makeState) {
       };
       console.log(param);
       socket.emit("chatting", param);
+      chatInput.value = "";
     });
 
     function appendChatMessage(data) {
@@ -212,6 +213,8 @@ function sendCalculate() {
     url: "PHP/calceMoney.php",
     type: "post",
     data: fareDate,
+  }).done(function (data) {
+    const calceMoney = Math.ceil(data / 10) * 10;
   });
 }
 function EntranceRoomClose() {
@@ -229,7 +232,6 @@ function saveUser() {
     type: "post",
     data: chatDate,
   });
-  alert("!!!!!!");
 }
 sendCalculateBtn.addEventListener("click", sendCalculate);
 /*

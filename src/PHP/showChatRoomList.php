@@ -22,22 +22,34 @@ echo '<div class="main-top">
         </div>
       </div>';
 echo '<div class="main-middle">';
-$chatListSql = "select * from chatlist  order by endtime ,chatid";
+$chatListSql = "select * from chatlist  order by endtime ,chatid, state desc";
 $chatLists = pg_query($conn, $chatListSql);
 if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {
     while ($chatList = pg_fetch_array($chatLists)) {
-      echo "<div class='chatList'>
+      echo "<div class='chatList ";
+      if ($chatList["state"] == "t")
+        echo "recruitmentCompleted";
+      echo "'>
                 <div class='row chatList-row'>
                   <div class='row chatList-timeTitle'>
                     <p>" . $chatList["endtime"] . "</p>
                 <!--<p>" . $chatList['chattitle'] . "</p>-->
                     <p class='chatList-chatid'>" . $chatList['chatid'] . "</p>
                   </div>";
-      if (in_array($chatList['chatid'], $myLikeChatLists))
-        echo "<button class='chatList-deleteLikeBtn'><i class='fa-solid fa-heart'></i></button>";
+      if ($chatList["state"] == "t"){
+        if (in_array($chatList['chatid'], $myLikeChatLists))
+        echo "<button class='chatList-deleteLikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
       else
-        echo "<button class='chatList-LikeBtn'><i class='fa-solid fa-heart'></i></button>";
+        echo "<button class='chatList-LikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
+
+      }
+      else {
+        if (in_array($chatList['chatid'], $myLikeChatLists))
+          echo "<button class='chatList-deleteLikeBtn'><i class='fa-solid fa-heart'></i></button>";
+        else
+          echo "<button class='chatList-LikeBtn'><i class='fa-solid fa-heart'></i></button>";
+      }
       echo "</div>
                 <div class='row chatList-row'>
                   <div class='row'>
@@ -50,11 +62,14 @@ if ($chatLists) {
                     <p>/</p>
                     <p class='chatList-maxMember'>" . $chatList['membernum'] . "</p>
                   </div>
-                </div>
-                <button class='chatList-Entrance'>
-                  입장
-                </button>
-            </div>";
+                </div>";
+      if ($chatList["state"] == "t")
+        echo "<button class='chatList-recruitmentCompleted'>";
+      else
+        echo "<button class='chatList-Entrance'>";
+      echo "입장
+          </button>
+        </div>";
     }
   }
 }

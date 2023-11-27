@@ -51,6 +51,9 @@ if (count($user) == 1) {
   $searchChats = pg_query($conn, $updateEntrantSql);
 }
 
+$updateStateSql = "update chatlist set state = true where chatid = " . $chatId;
+pg_query($conn, $updateStateSql);
+
 pg_close($conn);
 
 ?>
