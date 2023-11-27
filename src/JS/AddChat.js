@@ -23,16 +23,25 @@ function submitAddChat() {
       startArea: addChatStartArea,
       goalArea: addChatGoalArea,
       endTime: addChatEndTime,
+      myId: myId,
     };
     timeVal.classList.remove("border-bottom-red");
     timeTxt.classList.remove("border-bottom-red");
     ErrorTimeTxt.classList.remove("Error-visible");
     ErrorTimeTxt.classList.add("Error-hide");
-
-    $.ajax({ url: "PHP/addChatRoom.php", type: "post", data: addChatData });
+    let newChatId;
+    $.ajax({
+      url: "PHP/addChatRoom.php",
+      type: "post",
+      data: addChatData,
+    }).done(function (data) {
+      newChatId = data;
+      localStorage.setItem("enterRoom", newChatId);
+    });
     addChatForm.classList.add("popup-hide");
     addChatForm.classList.remove("popup-visible");
-    setTimeout(updateChatList, 100);
+
+    setTimeout(enterRoom, 100);
   } else {
     timeVal.classList.add("border-bottom-red");
     timeTxt.classList.add("border-bottom-red");

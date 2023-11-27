@@ -48,12 +48,14 @@
   display: flex;
   background-color: #b2c7d9;
 }
+.chatting-boardingBtn,
 .chatting-calculateBtn {
   font-size: 2vh;
   padding: 10px;
   border: none;
   background-color: var(--white-blue-color);
   border-radius: 20px;
+  margin-right: 10px;
 }
 
 .chatting-input {

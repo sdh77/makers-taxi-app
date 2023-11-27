@@ -21,6 +21,7 @@ function EntranceChat(event) {
     const EntranceChatcloseBtn = document.querySelector(
       ".EntranceRoom-closeBtn"
     );
+
     EntranceChatBtn.addEventListener("click", enterRoom);
     EntranceChatcloseBtn.addEventListener("click", EntranceRoomClose);
   });
@@ -38,7 +39,11 @@ function enterRoom() {
   const chatInfo = {
     chatId: chatId,
   };
-
+  $.ajax({
+    url: "PHP/enterChatRoom.php",
+    type: "post",
+    data: chatInfo,
+  });
   $.ajax({
     url: "PHP/showChatRoom.php",
     type: "post",
@@ -47,9 +52,11 @@ function enterRoom() {
     main_topMiddle.innerHTML = data;
     const chatExitBtn = document.querySelector(".chatting-outBtn");
     const calculateBtn = document.querySelector(".chatting-calculateBtn");
+    const boardingBtn = document.querySelector(".chatting-boardingBtn");
 
     chatExitBtn.addEventListener("click", ExitChat);
     calculateBtn.addEventListener("click", showCalculatePopup);
+    boardingBtn.addEventListener("click", saveUser);
     ("use strict");
 
     class LiModel {
@@ -149,8 +156,19 @@ function enterRoom() {
 }
 
 function ExitChat() {
+  const chatId = Number(document.querySelector(".chatRoom-chatId").innerHTML);
+  console.log(chatId);
   window.localStorage.removeItem("enterRoom");
-  showChatRoom();
+  const chatInfo = {
+    chatId: chatId,
+  };
+
+  $.ajax({
+    url: "PHP/exitChatRoom.php",
+    type: "post",
+    data: chatInfo,
+  });
+  setTimeout(showChatRoom, 100);
 }
 function showCalculatePopup() {
   calculateForm.classList.add("popup-visible");
@@ -161,7 +179,10 @@ function sendCalculate() {
   const taxiFare = Number(
     document.querySelector(".CalculateBody-taxiFare").value
   );
+  const chatId = Number(document.querySelector(".chatRoom-chatId").innerHTML);
+
   const fareDate = {
+    chatId: chatId,
     taxiFare: taxiFare,
   };
   $.ajax({
@@ -174,4 +195,34 @@ function EntranceRoomClose() {
   EntranceChatForm.classList.add("popup-hide");
   EntranceChatForm.classList.remove("popup-visible");
 }
+function saveUser() {
+  const chatId = Number(document.querySelector(".chatRoom-chatId").innerHTML);
+
+  const chatDate = {
+    chatId: chatId,
+  };
+  $.ajax({
+    url: "PHP/saveuser.php",
+    type: "post",
+    data: chatDate,
+  });
+  alert("!!!!!!");
+}
 sendCalculateBtn.addEventListener("click", sendCalculate);
+/*
+탑승 -> 정보저장 사용자들 ******..
+
+무조건 1/n
+
+청구 채팅방에 보여주자니 채팅방을 나가면 정보가 사라지고
+정보를 저장해뒀으니 다른 페이지에서 보여주는 것도 가능 
+정산이 안되면 채팅방을 못나가게 할거냐 아니면 알람이 계속 오도록 할거냐
+12시간 이내에 안보내면 어떻게 할거냐
+
+카카오톡 정산창
+
+정산
+금액이 맞는지 투표
+-> 정산
+
+*/

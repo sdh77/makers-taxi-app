@@ -22,7 +22,7 @@ echo '<div class="main-top">
         </div>
       </div>';
 echo '<div class="main-middle">';
-$chatListSql = "select * from chatlist";
+$chatListSql = "select * from chatlist  order by endtime ,chatid";
 $chatLists = pg_query($conn, $chatListSql);
 if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {
@@ -46,9 +46,9 @@ if ($chatLists) {
                     <p>&nbsp;" . $chatList['goalarea'] . "</p>
                   </div>
                   <div class='row'>
-                    <p>" . $chatList['defaultnum'] . "</p>
+                    <p class='chatList-nowMember'>" . $chatList['defaultnum'] . "</p>
                     <p>/</p>
-                    <p>" . $chatList['membernum'] . "</p>
+                    <p class='chatList-maxMember'>" . $chatList['membernum'] . "</p>
                   </div>
                 </div>
                 <button class='chatList-Entrance'>

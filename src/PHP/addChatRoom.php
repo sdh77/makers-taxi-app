@@ -7,14 +7,20 @@ $memberNum = $_POST['MemberNum'];
 $startArea = $_POST['startArea'];
 $goalArea = $_POST['goalArea'];
 $endTime = $_POST['endTime'];
-echo $chatTitle;
-echo $defaultNum;
-echo $memberNum;
-echo $startArea;
-echo $goalArea;
-echo $endTime;
-$insertChatList = "insert into chatList(chattitle,defaultnum,membernum,startarea,goalarea,endtime)
-values ('" . $chatTitle . "'," . $defaultNum . "," . $memberNum . ",'" . $startArea . "','" . $goalArea . "','" . $endTime . "')";
+$myId = $_POST['myId'];
+$chatId;
+$searchLastChatIdSql = "select max(chatid) from chatlist";
+$lastChatId = pg_query($conn, $searchLastChatIdSql);
+if ($lastChatId) {
+  if (pg_num_rows($lastChatId) > 0) {
+    while ($row = pg_fetch_assoc($lastChatId)) {
+      $chatId = $row['max'] + 1;
+    }
+  }
+}
+echo $chatId;
+$insertChatList = "insert into chatList(chattitle,defaultnum,membernum,startarea,goalarea,endtime,maker)
+values ('" . $chatTitle . "'," . $defaultNum . "," . $memberNum . ",'" . $startArea . "','" . $goalArea . "','" . $endTime . "','" . $myId . "')";
 pg_query($conn, $insertChatList);
 pg_close($conn);
 ?>

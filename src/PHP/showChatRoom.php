@@ -12,7 +12,8 @@ $chatDatas = pg_query($conn, $searchChatSql);
 if ($chatDatas) {
   if (pg_num_rows($chatDatas) > 0) {
     while ($chatData = pg_fetch_array($chatDatas)) {
-      echo '
+      if ($chatData['defaultnum'] <= $chatData['membernum']) {
+        echo '
       <div class="wrapper">
           <div class="user-container">
             <div>' . $chatData['chattitle'] . '</div>
@@ -23,45 +24,46 @@ if ($chatDatas) {
           </div>
           <div class="display-container">
             <ul class="chatting-list">';
-      if ($messageDatas) {
-        if (pg_num_rows($messageDatas) > 0) {
-          while ($messageData = pg_fetch_array($messageDatas)) {
-            if ($_SESSION['id'] == $messageData['id']) {
-              $date = date_create($messageData['time']);
-              echo '<li class="sent">
+        if ($messageDatas) {
+          if (pg_num_rows($messageDatas) > 0) {
+            while ($messageData = pg_fetch_array($messageDatas)) {
+              if ($_SESSION['id'] == $messageData['id']) {
+                $date = date_create($messageData['time']);
+                echo '<li class="sent">
                     <span class="profile">
                     <span class="user">' . $messageData['id'] . '</span>';
-              if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
-                echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
-              } else {
-                echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
-              }
-              echo '</span>
+                if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
+                  echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
+                } else {
+                  echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
+                }
+                echo '</span>
                   <span class="message">' . $messageData['msg'] . '</span>
                   <span class="time">' . date_format($date, "g:i a") . '</span>
                 </li>';
 
-            } else {
-              echo '<li class="received">
+              } else {
+                echo '<li class="received">
                    <span class="profile">
                   <span class="user">' . $messageData['id'] . '</span>';
-              if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
-                echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
-              } else {
-                echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
-              }
-              echo '</span>
+                if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
+                  echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
+                } else {
+                  echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
+                }
+                echo '</span>
                 <span class="message">' . $messageData['msg'] . '</span>
                 <span class="time">' . substr($messageData['time'], 11, 5) . '</span>
               </li>';
+              }
             }
           }
         }
-      }
-      echo '</ul>
+        echo '</ul>
           </div>
           <div class="chatting-btns">
-            <button class="chatting-calculateBtn">정산</button>
+          <button class="chatting-boardingBtn">탑승 완료</button>
+          <button class="chatting-calculateBtn">정산</button>
           </div>
           <div class="input-container">
             <span>
@@ -71,6 +73,9 @@ if ($chatDatas) {
           </div>
         </div>
         ';
+      } else {
+        echo "채팅방이 가득 입니ㅏㄷ.";
+      }
     }
   }
 }
