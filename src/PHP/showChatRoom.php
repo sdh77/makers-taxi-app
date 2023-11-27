@@ -32,8 +32,8 @@ if ($chatDatas) {
                 echo '<li class="sent">
                     <span class="profile">
                     <span class="user">' . $messageData['id'] . '</span>';
-                if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
-                  echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
+                if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
+                  echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
                 } else {
                   echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
                 }
@@ -46,8 +46,8 @@ if ($chatDatas) {
                 echo '<li class="received">
                    <span class="profile">
                   <span class="user">' . $messageData['id'] . '</span>';
-                if (file_exists(('../PROFILE/' . $_SESSION['id'] . '.jpeg'))) {
-                  echo '<img class="image" src="PROFILE/' . $_SESSION['id'] . '.jpeg" alt="profile" />';
+                if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
+                  echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
                 } else {
                   echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
                 }
