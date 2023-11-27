@@ -285,7 +285,8 @@ function logOut() {
     url: "PHP/logOut.php",
     type: "post",
   });
-  window.location.href = "/makers-taxi-app/index.html";
+  localStorage.removeItem("enterRoom");
+  window.location.href = "/makers-taxi-app/src";
 }
 function showChargeMoneyPopup() {
   chargeMoneyForm.classList.remove("popup-hide");

@@ -61,13 +61,32 @@ function enterRoom() {
 
       makeLi() {
         const li = document.createElement("li");
-        li.classList.add(nickname.value === this.name ? "sent" : "received");
-        const dom = `<span class="profile">
+        li.classList.add(
+          nickname.innerHTML === this.name ? "sent" : "received"
+        );
+        var profile = `./profile/${this.name}.jpeg`;
+
+        var xhr = new XMLHttpRequest();
+        var dom;
+        xhr.open("HEAD", profile, false);
+        xhr.send();
+
+        if (xhr.status == "404") {
+          dom = `<span class="profile">
           <span class="user">${this.name}</span>
-          <img class="image" src="https://placeimg.com/50/50/any" alt="any" />
+          <img class="image" src="./profile/default.jpeg" alt="any" />
         </span>
         <span class="message">${this.msg}</span>
         <span class="time">${this.time}</span>`;
+        } else {
+          dom = `<span class="profile">
+        <span class="user">${this.name}</span>
+        <img class="image" src="./profile/${this.name}.jpeg" alt="any" />
+      </span>
+      <span class="message">${this.msg}</span>
+      <span class="time">${this.time}</span>`;
+        }
+
         li.innerHTML = dom;
         chatList.appendChild(li);
       }
@@ -93,14 +112,14 @@ function enterRoom() {
       });
     });
 
-    const nickname = document.querySelector("#nickname");
+    const nickname = document.querySelector(".chatRoom-myId");
     const chatList = document.querySelector(".chatting-list");
     const chatInput = document.querySelector(".chatting-input");
     const sendButton = document.querySelector(".send-button");
 
     sendButton.addEventListener("click", () => {
       const param = {
-        name: nickname.value,
+        name: nickname.innerHTML,
         msg: chatInput.value,
         time: new Date().toLocaleTimeString(),
         chatId: Number(chatId),

@@ -9,22 +9,11 @@
 
 .user-container {
   background: #a9bdce;
-  /* display: flex; */
-  justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  display: none;
-}
-
-.user-container label {
-  font-size: 14px;
-  margin-right: 1rem;
-}
-
-.user-container input {
-  border-radius: 3px;
-  border: none;
-  height: 100%;
+  /* display: none; */
 }
 
 .display-container {
@@ -47,25 +36,26 @@
 }
 
 .chatting-outBtn {
-  position: absolute;
-  left: 10px;
-  top: 10px;
   font-size: 2vh;
   padding: 10px;
   border: none;
   background-color: var(--white-blue-color);
   border-radius: 20px;
+}
+.chatting-btns {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #b2c7d9;
 }
 .chatting-calculateBtn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
   font-size: 2vh;
   padding: 10px;
   border: none;
   background-color: var(--white-blue-color);
   border-radius: 20px;
 }
+
 .chatting-input {
   font-size: 14px;
   height: 100%;
