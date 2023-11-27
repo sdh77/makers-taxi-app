@@ -9,12 +9,12 @@ $goalArea = $_POST['goalArea'];
 $endTime = $_POST['endTime'];
 $myId = $_POST['myId'];
 $chatId;
-$searchLastChatIdSql = "select max(chatid) from chatlist";
+$searchLastChatIdSql = "select * from chatlist_chatid_seq";
 $lastChatId = pg_query($conn, $searchLastChatIdSql);
 if ($lastChatId) {
   if (pg_num_rows($lastChatId) > 0) {
     while ($row = pg_fetch_assoc($lastChatId)) {
-      $chatId = $row['max'] + 1;
+      $chatId = $row['last_value'] + 1;
     }
   }
 }

@@ -41,7 +41,9 @@ function submitAddChat() {
     addChatForm.classList.add("popup-hide");
     addChatForm.classList.remove("popup-visible");
 
-    setTimeout(enterRoom, 100);
+    setTimeout(function () {
+      enterRoom(1);
+    }, 100);
   } else {
     timeVal.classList.add("border-bottom-red");
     timeTxt.classList.add("border-bottom-red");

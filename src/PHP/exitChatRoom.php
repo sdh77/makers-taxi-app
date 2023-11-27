@@ -11,6 +11,8 @@ if ($chatDatas) {
   if (pg_num_rows($chatDatas) > 0) {
     while ($chatData = pg_fetch_array($chatDatas)) {
       $updateNumSql = "update chatlist set defaultnum =" . ($chatData['defaultnum'] - 1) . " where chatid = " . $chatId;
+
+      echo $updateNumSql;
       pg_query($conn, $updateNumSql);
       $updateUserInfoSql = "update taxi_userinfo set chatid = 0 where id = '" . $_SESSION['id'] . "'";
       pg_query($conn, $updateUserInfoSql);

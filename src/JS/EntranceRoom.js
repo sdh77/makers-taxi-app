@@ -22,7 +22,9 @@ function EntranceChat(event) {
       ".EntranceRoom-closeBtn"
     );
 
-    EntranceChatBtn.addEventListener("click", enterRoom);
+    EntranceChatBtn.addEventListener("click", function () {
+      enterRoom(0);
+    });
     EntranceChatcloseBtn.addEventListener("click", EntranceRoomClose);
   });
 }
@@ -34,7 +36,7 @@ const socket = io("http://localhost:3000", {
   cors: { origin: "*" },
 });
 
-function enterRoom() {
+function enterRoom(makeState) {
   let chatId;
   if (!localStorage.getItem("enterRoom")) {
     chatId = document.querySelector(".EntranceRoom-chatId").textContent.trim();
@@ -45,11 +47,13 @@ function enterRoom() {
   const chatInfo = {
     chatId: chatId,
   };
-  $.ajax({
-    url: "PHP/enterChatRoom.php",
-    type: "post",
-    data: chatInfo,
-  });
+  if (!makeState) {
+    $.ajax({
+      url: "PHP/enterChatRoom.php",
+      type: "post",
+      data: chatInfo,
+    });
+  }
   $.ajax({
     url: "PHP/showChatRoom.php",
     type: "post",
@@ -159,7 +163,7 @@ function enterRoom() {
         console.error("LiModel is not defined");
         return;
       }
-
+      s;
       const liModel = new LiModel(data.name, data.msg, data.time);
       liModel.makeLi();
       scrollToBottom();
