@@ -22,13 +22,19 @@ const pool = new Pool({
 });
 
 io.on("connection", (socket) => {
-  socket.emit("getLiModel", {
-    name: "default",
-    msg: "default",
-    time: "default",
+  socket.on("enterRoom", (chatId) => {
+    socket.join(chatId);
+    socket.emit("getLiModel", {
+      name: "default",
+      msg: "default",
+      time: "default",
+      chatId: chatId,
+    });
   });
 
   socket.on("chatting", async (data) => {
+    // socket.on("enterRoom", async (chatId) => {
+    // socket.join(chatId);
     try {
       const { name, msg, chatId } = data;
       const formattedTime = moment().format("h:mm A");
@@ -44,8 +50,8 @@ io.on("connection", (socket) => {
         return;
       }
 
-      io.emit("chatting", {
-        name: insertedChat.id, // 여기서 name을 id로 변경
+      io.to(chatId).emit("chatting", {
+        name: insertedChat.id,
         msg: insertedChat.msg,
         time: formattedTime,
         chatId: chatId,
