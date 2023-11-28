@@ -30,8 +30,11 @@ if ($do == 1) {
         $sendMoneySql = "update user_money set money = " . $newMoney . " where id = '" . $makerId . "'";
         pg_query($conn, $sendMoneySql);
         echo "complete";
-
       }
+    } else {
+      $sendMoneySql = "insert into user_money values('" . $makerId . "'," . $sendMoney . ")";
+      pg_query($conn, $sendMoneySql);
+      echo "complete";
     }
   }
 }

@@ -34,7 +34,7 @@ function showFriends() {
 function showChatRoom() {
   const nowChat = localStorage.getItem("enterRoom");
   if (!nowChat) updateChatList();
-  else enterRoom();
+  else enterRoom(1);
   friends.querySelector("i").classList.remove("click");
   chatRoom.querySelector("i").classList.add("click");
   setting.querySelector("i").classList.remove("click");

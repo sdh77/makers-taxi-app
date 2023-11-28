@@ -90,12 +90,8 @@ function enterRoom(makeState) {
           li.classList.add(
             nickname.innerHTML === this.name ? "sent" : "received"
           );
-        var profile = `./profile/${this.name}.jpeg`;
-
-        var xhr = new XMLHttpRequest();
         var dom;
-        xhr.open("HEAD", profile, false);
-        xhr.send();
+
         if (this.name == "system") {
           dom = '<span class="message">탑승이 완료되었습니다.</span>';
         } else if (this.name == "systemMoney") {
@@ -108,6 +104,11 @@ function enterRoom(makeState) {
                 <button class="moneyError">총액이 이상해요</button>
                 <button class="moneySend">송금하기</button></div></div>`;
         } else {
+          var profile = `./profile/${this.name}.jpeg`;
+          var xhr = new XMLHttpRequest();
+          xhr.open("HEAD", profile, false);
+          xhr.send();
+
           if (xhr.status == "404") {
             dom = `<span class="profile">
           <span class="user">${this.name}</span>
