@@ -61,10 +61,12 @@ function enterRoom(makeState) {
   }).done(function (data) {
     main_topMiddle.innerHTML = data;
     const chatExitBtn = document.querySelector(".chatting-outBtn");
+    const chatExitBtnError = document.querySelector(".chatting-outBtnError");
     const calculateBtn = document.querySelector(".chatting-calculateBtn");
     const boardingBtn = document.querySelector(".chatting-boardingBtn");
-
-    chatExitBtn.addEventListener("click", ExitChat);
+    if (chatExitBtn) chatExitBtn.addEventListener("click", ExitChat);
+    else if (chatExitBtnError)
+      chatExitBtnError.addEventListener("click", ExitChatError);
     calculateBtn.addEventListener("click", showCalculatePopup);
     boardingBtn.addEventListener("click", saveUser);
     ("use strict");
@@ -155,7 +157,7 @@ function enterRoom(makeState) {
         chatId: Number(chatId),
       };
       console.log(param);
-      socket.emit("chatting", param);
+      if (param.msg != "") socket.emit("chatting", param);
       chatInput.value = "";
     });
 
@@ -164,7 +166,6 @@ function enterRoom(makeState) {
         console.error("LiModel is not defined");
         return;
       }
-      s;
       const liModel = new LiModel(data.name, data.msg, data.time);
       liModel.makeLi();
       scrollToBottom();
@@ -214,7 +215,9 @@ function sendCalculate() {
     type: "post",
     data: fareDate,
   }).done(function (data) {
-    const calceMoney = Math.ceil(data / 10) * 10;
+    const calculateMoney = data;
+    console.log(calculateMoney);
+    //정산금 메시지로 전달
   });
 }
 function EntranceRoomClose() {
@@ -233,16 +236,22 @@ function saveUser() {
     data: chatDate,
   });
 }
+function ExitChatError() {
+  alert("정산을 해주세요");
+}
 sendCalculateBtn.addEventListener("click", sendCalculate);
 /*
 탑승 -> 정보저장 사용자들 ******..
 
-무조건 1/n
+무조건 1/n ***************..
 
 청구 채팅방에 보여주자니 채팅방을 나가면 정보가 사라지고
-정보를 저장해뒀으니 다른 페이지에서 보여주는 것도 가능 
-정산이 안되면 채팅방을 못나가게 할거냐 아니면 알람이 계속 오도록 할거냐
+정보를 저장해뒀으니 다른 페이지에서 보여주는 것도 가능  
+정산이 안되면 채팅방을 못나가게 할거냐 ************..
+아니면 알람이 계속 오도록 할거냐
+
 12시간 이내에 안보내면 어떻게 할거냐
+
 
 카카오톡 정산창
 

@@ -14,7 +14,11 @@ if ($countDatas) {
     }
   }
 }
-echo $taxiFare / $userCnt;
+$updateCostSql = "update taxi_userinfo set settlement = " . round($taxiFare / $userCnt) . " where chatid = " . $chatId . " and id not in(select maker from chatlist where chatid = " . $chatId . ")";
+
+pg_query($conn, $updateCostSql);
+echo round($taxiFare / $userCnt);
+
 pg_close($conn);
 
 ?>
