@@ -27,9 +27,9 @@ if ($chatDatas) {
           if (pg_num_rows($noShowDatas) > 0) {
             while ($noShowData = pg_fetch_array($noShowDatas)) {
               if ($noShowData['settlement'] == 0)
-                echo '<button class="chatOutBtn chatting-outBtn">나가기</button>';
+                echo '<button class="chatOutBtn chatting-outBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
               else
-                echo '<button class="chatOutBtn chatting-outBtnError">나가기</button>';
+                echo '<button class="chatOutBtn chatting-outBtnError"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
             }
           }
         }
