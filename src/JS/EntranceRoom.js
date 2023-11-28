@@ -84,30 +84,45 @@ function enterRoom(makeState) {
 
       makeLi() {
         const li = document.createElement("li");
-        li.classList.add(
-          nickname.innerHTML === this.name ? "sent" : "received"
-        );
+        if (this.name == "system") li.classList.add("takeTaxi");
+        else if (this.name == "systemMoney") li.classList.add("moneyTaxi");
+        else
+          li.classList.add(
+            nickname.innerHTML === this.name ? "sent" : "received"
+          );
         var profile = `./profile/${this.name}.jpeg`;
 
         var xhr = new XMLHttpRequest();
         var dom;
         xhr.open("HEAD", profile, false);
         xhr.send();
-
-        if (xhr.status == "404") {
-          dom = `<span class="profile">
+        if (this.name == "system") {
+          dom = '<span class="message">탑승이 완료되었습니다.</span>';
+        } else if (this.name == "systemMoney") {
+          const moneyData = this.msg.split(",");
+          dom = `<div class="moneyDiv">
+                <div class="moneyTitle">정산해주세요</div>
+                <div class="moneyTotal">총액${moneyData[0]} </div>
+                <div class="moneyDutch">송금액${moneyData[1]}</div>
+                <div class="moneyBtns">
+                <button class="moneyError">총액이 이상해요</button>
+                <button class="moneySend">송금하기</button></div></div>`;
+        } else {
+          if (xhr.status == "404") {
+            dom = `<span class="profile">
           <span class="user">${this.name}</span>
           <img class="image" src="./profile/default.jpeg" alt="any" />
         </span>
         <span class="message">${this.msg}</span>
         <span class="time">${this.time}</span>`;
-        } else {
-          dom = `<span class="profile">
+          } else {
+            dom = `<span class="profile">
         <span class="user">${this.name}</span>
         <img class="image" src="./profile/${this.name}.jpeg" alt="any" />
       </span>
       <span class="message">${this.msg}</span>
       <span class="time">${this.time}</span>`;
+          }
         }
 
         li.innerHTML = dom;
@@ -175,8 +190,8 @@ function enterRoom(makeState) {
     function scrollToBottom() {
       displayContainer.scrollTo(0, displayContainer.scrollHeight);
     }
+    scrollToBottom();
   });
-
   EntranceChatPopup.classList.remove("popup-visible");
   EntranceChatPopup.classList.add("popup-hide");
 }
@@ -202,6 +217,9 @@ function showCalculatePopup() {
 }
 
 function sendCalculate() {
+  setTimeout(function () {
+    enterRoom(1);
+  }, 100);
   const taxiFare = Number(
     document.querySelector(".CalculateBody-taxiFare").value
   );
@@ -218,7 +236,18 @@ function sendCalculate() {
   }).done(function (data) {
     const calculateMoney = data;
     console.log(calculateMoney);
-    //정산금 메시지로 전달
+
+    const param = {
+      name: "systemMoney",
+      msg: taxiFare + "," + calculateMoney,
+      time: new Date().toLocaleTimeString(),
+      chatId: chatId,
+    };
+
+    socket.emit("chatting", param);
+    setTimeout(function () {
+      enterRoom(1);
+    }, 100);
   });
 }
 function EntranceRoomClose() {
@@ -236,11 +265,67 @@ function saveUser() {
     type: "post",
     data: chatDate,
   });
+  const param = {
+    name: "system",
+    msg: "탑승이 완료되었습니다.",
+    time: new Date().toLocaleTimeString(),
+    chatId: chatId,
+  };
+
+  socket.emit("chatting", param);
+  setTimeout(function () {
+    enterRoom(1);
+  }, 100);
 }
+
 function ExitChatError() {
   alert("정산을 해주세요");
 }
 sendCalculateBtn.addEventListener("click", sendCalculate);
+setInterval(() => {
+  const findCalc = document.querySelector(".moneyDiv");
+  if (findCalc) {
+    const sendMoneyBtn = document.querySelector(".moneySend");
+    sendMoneyBtn.addEventListener("click", sendMoneyTaxiFare);
+  }
+}, 1000);
+function sendMoneyTaxiFare() {
+  const moneyTxt = document.querySelector(".moneyDutch").innerHTML;
+  const sendMoney = Number(moneyTxt.replace("보낼금액:", ""));
+  const sendMoneyData = {
+    makerId: document.querySelector(".chatRoom-makerId").innerHTML,
+    myId: myId,
+    sendMoney: sendMoney,
+  };
+  $.ajax({
+    url: "PHP/sendMoneyTaxiFare.php",
+    type: "post",
+    data: sendMoneyData,
+  }).done(function (data) {
+    console.log(data);
+    if (data != "complete") {
+      alert("송금하지 못했습니다. 잔액을 확인해주세요");
+    } else {
+      const sendId = {
+        myId: myId,
+      };
+      $.ajax({
+        url: "PHP/clearCalculate.php",
+        type: "post",
+        data: sendId,
+      });
+      alert("송금완료했습니다.");
+      setTimeout(function () {
+        enterRoom(1);
+      }, 100);
+    }
+  });
+}
+/*
+방장 아이디 방장 돈
+나의 아이디 나의 돈
+송금할 돈
+*/
 /*
 탑승 -> 정보저장 사용자들 ******..
 

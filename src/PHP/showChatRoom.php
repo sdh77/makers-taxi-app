@@ -21,7 +21,8 @@ if ($chatDatas) {
           <div class="user-container">
             <div>' . $chatData['chattitle'] . '</div>
             <div class="chatRoom-chatId hide">' . $chatId . '</div>
-            <div class="chatRoom-myId hide">' . $_SESSION['id'] . '</div>';
+            <div class="chatRoom-myId hide">' . $_SESSION['id'] . '</div>
+            <div class="chatRoom-makerId hide">' . $chatData['maker'] . '</div>';
         if ($noShowDatas) {
           if (pg_num_rows($noShowDatas) > 0) {
             while ($noShowData = pg_fetch_array($noShowDatas)) {
@@ -38,35 +39,51 @@ if ($chatDatas) {
         if ($messageDatas) {
           if (pg_num_rows($messageDatas) > 0) {
             while ($messageData = pg_fetch_array($messageDatas)) {
-              if ($_SESSION['id'] == $messageData['id']) {
-                $date = date_create($messageData['time']);
-                echo '<li class="sent">
+              if ($messageData['id'] == "system") {
+                echo "<li class='takeTaxi'><span class='message'>탑승이 완료되었습니다.</span></li>";
+              } else if ($messageData['id'] == "systemMoney") {
+                $moneyData = explode(',', $messageData['msg']);
+                echo '
+                <li class="moneyTaxi">
+                <div class="moneyDiv">
+                <div class="moneyTitle">정산해주세요</div>
+                <div class="moneyTotal">결재금액:' . $moneyData[0] . ' </div>
+                <div class="moneyDutch">보낼금액:' . $moneyData[1] . '</div>
+                <div class="moneyBtns">
+                <button class="moneyError">총액이 이상해요</button>
+                <button class="moneySend">송금하기</button></div></div>
+                </li>';
+              } else {
+                if ($_SESSION['id'] == $messageData['id']) {
+                  $date = date_create($messageData['time']);
+                  echo '<li class="sent">
                     <span class="profile">
                     <span class="user">' . $messageData['id'] . '</span>';
-                if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
-                  echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
-                } else {
-                  echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
-                }
-                echo '</span>
+                  if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
+                    echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
+                  } else {
+                    echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
+                  }
+                  echo '</span>
                   <span class="message">' . $messageData['msg'] . '</span>
                   <span class="time">' . date_format($date, "g:i a") . '</span>
                 </li>';
 
-              } else {
-                $date = date_create($messageData['time']);
-                echo '<li class="received">
+                } else {
+                  $date = date_create($messageData['time']);
+                  echo '<li class="received">
                    <span class="profile">
                   <span class="user">' . $messageData['id'] . '</span>';
-                if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
-                  echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
-                } else {
-                  echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
-                }
-                echo '</span>
+                  if (file_exists(('../PROFILE/' . $messageData['id'] . '.jpeg'))) {
+                    echo '<img class="image" src="PROFILE/' . $messageData['id'] . '.jpeg" alt="profile" />';
+                  } else {
+                    echo '<img class="image" src="PROFILE/default.jpeg" alt="profile" />';
+                  }
+                  echo '</span>
                 <span class="message">' . $messageData['msg'] . '</span>
                 <span class="time">' . date_format($date, "g:i a") . '</span>
               </li>';
+                }
               }
             }
           }

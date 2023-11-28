@@ -76,7 +76,7 @@
   width: 20vw;
 }
 
-.chatting-list li {
+.chatting-list li:not(.takeTaxi, .moneyTaxi) {
   width: 90%;
   padding: 0.3rem;
   display: flex;
@@ -127,4 +127,56 @@
 
 .received .message {
   background: #fff;
+}
+
+.takeTaxi {
+  width: 100%;
+  padding: 0.3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.takeTaxi .message {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 2vh;
+  border-radius: 25px;
+}
+
+.moneyTaxi {
+  width: 100%;
+  padding: 0.3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.moneyDiv {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+}
+.moneyTitle {
+  font-size: 3vh;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.moneyTotal,
+.moneyDutch {
+  font-size: 2vh;
+  width: 100%;
+  margin: 5px 0;
+}
+.moneyError,
+.moneySend {
+  border: none;
+  background-color: red;
+  font-size: 2vh;
 }
