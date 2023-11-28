@@ -71,7 +71,8 @@ if ($chatDatas) {
             }
           }
         }
-        echo '</ul>
+        if ($chatData['maker'] == $_SESSION['id']) {
+          echo '</ul>
           </div>
           <div class="chatting-btns">
           <button class="chatting-boardingBtn">탑승 완료</button>
@@ -85,6 +86,18 @@ if ($chatDatas) {
           </div>
         </div>
         ';
+        } else {
+          echo '</ul>
+          </div>
+          <div class="input-container">
+            <span>
+              <input type="text" class="chatting-input" />
+              <button class="send-button">전송</button>
+            </span>
+          </div>
+        </div>
+        ';
+        }
       } else {
         echo "채팅방이 가득 입니ㅏㄷ.";
       }

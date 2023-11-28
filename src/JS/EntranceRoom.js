@@ -67,8 +67,9 @@ function enterRoom(makeState) {
     if (chatExitBtn) chatExitBtn.addEventListener("click", ExitChat);
     else if (chatExitBtnError)
       chatExitBtnError.addEventListener("click", ExitChatError);
-    calculateBtn.addEventListener("click", showCalculatePopup);
-    boardingBtn.addEventListener("click", saveUser);
+    if (calculateBtn)
+      calculateBtn.addEventListener("click", showCalculatePopup);
+    if (boardingBtn) boardingBtn.addEventListener("click", saveUser);
     ("use strict");
 
     // socket.emit("enterRoom", chatId);
