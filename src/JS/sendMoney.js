@@ -26,11 +26,10 @@ function money10000() {
   moneyInput.value = nowInputValue + 10000;
 }
 function sendMoney() {
-  const nowAllMoney = Number(
-    document
-      .querySelector(".setArea-myMoney__money")
-      .innerHTML.replace("원", "")
-  );
+  const nowAllMoney = document.querySelector(
+    ".setArea-myMoney__money"
+  ).innerHTML;
+
   if (Number(moneyInput.value) == 0) {
     overErrorTxt.classList.remove("Error-visible");
     overErrorTxt.classList.add("Error-hide");

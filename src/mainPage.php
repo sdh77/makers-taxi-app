@@ -37,9 +37,9 @@ if (isset($_SESSION["id"])) {
     <div id="modalContent">
       <div id="addFriendBody">
         <div class="plusFriend">
-          <div class="popupHeader">add</div>
+          <div class="popupHeader">친구 추가</div>
           <form class="popupRow plusFriend-row">
-            <input class="plusFriend-id" type="text" placeholder="친구의 아이디를 입력하시오" name="friendId"/>
+            <input class="plusFriend-id" type="text" placeholder="친구의 아이디를 입력하세요" name="friendId"/>
             <button class="submitAddFriend" type="submit" onclick="AddFriend(event)">검색</button>
           </form>
           <div class="popupRow plusFriend-row">
@@ -120,7 +120,7 @@ if (isset($_SESSION["id"])) {
       <div id="friendManagementBody">
         <div class="friendManagement">
           <div class="friendManagement-friend_name">친구 이름</div>
-          <button class="friendManagement-deleteBtn">친구 삭제</button>
+          <button class="friendManagement-deleteBtn">삭제</button>
         </div>
       </div>
     </div>
@@ -128,16 +128,14 @@ if (isset($_SESSION["id"])) {
   <div id="chargeMoneyForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="chargeMoneyBody">
-        <div class="chargeMoneyBody-header">얼마나 층전할까요?</div>
-        <hr>
-        
+        <div class="chargeMoneyBody-header">얼마나 충전할까요?</div>
         <div class="chargeMoney">
-          <button class="chargeMoney-selectMoney">100000원</button>
-          <button class="chargeMoney-selectMoney">50000원</button>
-          <button class="chargeMoney-selectMoney">30000원</button>
-          <button class="chargeMoney-selectMoney">10000원</button>
-          <button class="chargeMoney-selectMoney">5000원</button>
-          <button class="chargeMoney-selectMoney">1000원</button>
+          <button class="chargeMoney-selectMoney">10만원</button>
+          <button class="chargeMoney-selectMoney">5만원</button>
+          <button class="chargeMoney-selectMoney">3만원</button>
+          <button class="chargeMoney-selectMoney">1만원</button>
+          <button class="chargeMoney-selectMoney">5천원</button>
+          <button class="chargeMoney-selectMoney">1천원</button>
         </div>
       </div>
     </div>
@@ -146,9 +144,9 @@ if (isset($_SESSION["id"])) {
   <div id="sendMoneyForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="sendMoneyBody">
-        <div class="sendMoneyBody-header">금액 입력</div>
+        <div class="sendMoneyBody-header">출금하기</div>
         <hr>
-        <input type="number" class="sendMoneyBody-inputMoney">
+        <input type="number" class="sendMoneyBody-inputMoney" placeholder = "보낼금액(원)">
         <div class="Over-Error Error-txt Error-hide">입력하신 금액이 보유 잔고보다 많습니다.</div>
         <div class="Zero-Error Error-txt Error-hide">입력하신 금액이 0원 입니다.</div>
 
@@ -171,9 +169,11 @@ if (isset($_SESSION["id"])) {
   <div id="CalculateForm" class="popup popup-hide">
     <div id="modalContent">
       <div id="CalculateBody">
-        <div class="CalculateBody-header">정산금</div>
-        <input type="number" class="CalculateBody-taxiFare"></input>
-        <button class="CalculateBody-calculateMoney">정산하기</button>        
+        <div class="CalculateBody-header">정산</div>
+        <div class="row">
+        <input type="number" class="CalculateBody-taxiFare" placeholder="택시비를 입력해주세요"></input>
+        <button class="CalculateBody-calculateMoney">확인</button>        
+        </div>
       </div>
     </div>
   </div>

@@ -34,12 +34,12 @@ echo '<h2>' . $_SESSION["id"] . '</h2>
 echo '<div class="setArea">
         <div class="setArea-money">
           <div class="setArea-myMoney">
-            <div class="setArea-myMoney__txt">택시비</div>
+            <div class="setArea-myMoney__txt">타냥pay</div>
             <div class="setArea-myMoney__money">' . $money . '원</div>
           </div>
           <div class="setArea-money_btn">
-            <button class="setArea-chargeMoney">충전</button>
-            <button class="setArea-sendMoney">출금</button>
+            <button class="setArea-chargeMoney"><i class="fa-solid fa-plus"></i> 충전</button>
+            <button class="setArea-sendMoney"><i class="fa-solid fa-won-sign"></i> 출금</button>
           </div>
         </div>';
 echo '  <button class="setArea-announcement">

@@ -22,7 +22,7 @@ echo '<div class="main-top">
         </div>
       </div>';
 echo '<div class="main-middle">';
-$chatListSql = "select * from chatlist  order by endtime ,chatid, state desc";
+$chatListSql = "select * from chatlist  order by state, endtime ,chatid";
 $chatLists = pg_query($conn, $chatListSql);
 if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {
@@ -37,14 +37,13 @@ if ($chatLists) {
                 <!--<p>" . $chatList['chattitle'] . "</p>-->
                     <p class='chatList-chatid'>" . $chatList['chatid'] . "</p>
                   </div>";
-      if ($chatList["state"] == "t"){
+      if ($chatList["state"] == "t") {
         if (in_array($chatList['chatid'], $myLikeChatLists))
-        echo "<button class='chatList-deleteLikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
-      else
-        echo "<button class='chatList-LikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
+          echo "<button class='chatList-deleteLikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
+        else
+          echo "<button class='chatList-LikeBtnRecruitmentCompleted'><i class='fa-solid fa-heart'></i></button>";
 
-      }
-      else {
+      } else {
         if (in_array($chatList['chatid'], $myLikeChatLists))
           echo "<button class='chatList-deleteLikeBtn'><i class='fa-solid fa-heart'></i></button>";
         else

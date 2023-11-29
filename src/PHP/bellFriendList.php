@@ -6,7 +6,9 @@ $friendBellCheckSQL = "select friend.id, friend.friendid, friend.friendcheck, ta
   from friend left join taxi_userinfo on friend.id = taxi_userinfo.id 
   where friendid = '" . $_SESSION['id'] . "' and friendcheck = false";
 $friendBellCheckList = pg_query($conn, $friendBellCheckSQL);
-echo '<div class="popupHeader">Alarm</div>';
+echo '<div class="popupBellHeader">
+<i class="fa-solid fa-bell"></i>
+</div>';
 echo '<div class="bellFriend-MainText">';
 if ($friendBellCheckList) {
   if (pg_num_rows($friendBellCheckList) > 0) {
@@ -16,7 +18,7 @@ if ($friendBellCheckList) {
         $row['name']
         . '</div>
         <div class="bellFriend-add">
-          <button class="bellFriend-add__btn">친구 추가</button>
+          <button class="bellFriend-add__btn">추가</button>
         </div>
       </div>';
     }

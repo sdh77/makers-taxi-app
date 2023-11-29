@@ -15,7 +15,7 @@
   width: 90%;
   margin: 10px 0;
   justify-content: space-between;
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 .notice-txt {
   display: flex;
@@ -24,6 +24,7 @@
 }
 .notice-txt .fa-solid {
   width: 15%;
+  color: var(--button-color-click);
 }
 .notice-title {
   width: 20%;

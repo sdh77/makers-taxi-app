@@ -37,16 +37,16 @@
 }
 
 .main-top-gear {
-  font-size: 3vh;
+  font-size: 2.5vh;
 }
 .setArea {
-  font-size: 3vh;
+  font-size: 2.5vh;
   margin: 10px;
   display: flex;
   flex-direction: column;
 }
 .setArea-money {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .setArea-myMoney {
   display: flex;
@@ -54,50 +54,62 @@
   padding: 10px 0;
 }
 .setArea-myMoney__txt {
-  width: 50%;
+  width: 45%;
+  padding-left: 5%;
   text-align: center;
+  text-align: left;
 }
 .setArea-myMoney__money {
-  width: 50%;
+  width: 45%;
+  padding-right: 5%;
   text-align: center;
+  text-align: right;
 }
 .setArea-money_btn {
   display: flex;
   justify-content: space-between;
 }
 .setArea-chargeMoney {
-  font-size: 3vh;
+  font-size: 2.5vh;
   border: none;
   background-color: transparent;
-  padding: 10px 0;
+  padding: 5px 0;
   width: 50%;
+  margin: 5px 5px;
   text-align: center;
+  background-color: var(--white-blue-color);
+}
+.setArea-sendMoney i,
+.setArea-chargeMoney i {
+  font-size: 2.5vh;
 }
 .setArea-sendMoney {
-  font-size: 3vh;
+  font-size: 2.5vh;
   border: none;
   background-color: transparent;
-  padding: 10px 0;
+  padding: 5px 0;
+  margin: 5px 5px;
   width: 50%;
   text-align: center;
+  background-color: var(--white-blue-color);
 }
 .setArea-announcement {
   padding: 10px 0;
   border: none;
-  font-size: 3vh;
+  font-size: 2.5vh;
   background-color: transparent;
   text-align: left;
 }
 .setArea-consumptionAmount {
   padding: 10px 0;
   border: none;
-  font-size: 3vh;
+  font-size: 2.5vh;
   background-color: transparent;
   text-align: left;
 }
 .setArea-logout {
   padding: 10px 0;
-  font-size: 3vh;
+  font-size: 2.5vh;
   border: none;
   background-color: transparent;
   text-align: left;

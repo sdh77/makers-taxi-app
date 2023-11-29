@@ -10,7 +10,7 @@ $countDatas = pg_query($conn, $countChatUserSql);
 if ($countDatas) {
   if (pg_num_rows($countDatas) > 0) {
     while ($count = pg_fetch_assoc($countDatas)) {
-      $userCnt = $count['count'];
+      $userCnt = $count['count'] + 1;
     }
   }
 }

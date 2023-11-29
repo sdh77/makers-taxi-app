@@ -97,12 +97,12 @@ function enterRoom(makeState) {
         } else if (this.name == "systemMoney") {
           const moneyData = this.msg.split(",");
           dom = `<div class="moneyDiv">
-                <div class="moneyTitle">정산해주세요</div>
-                <div class="moneyTotal">총액${moneyData[0]} </div>
-                <div class="moneyDutch">송금액${moneyData[1]}</div>
+                <div class="moneyTitle">정산해요 😆</div>
+                <div class="moneyTotal"><p>택시비</p><p>${moneyData[0]}원</p></div>
+                <div class="moneyDutch"><p>송금액</p><p class="moneyDutchMoneyTxt">${moneyData[1]}원</p></div>
                 <div class="moneyBtns">
-                <button class="moneyError">총액이 이상해요</button>
-                <button class="moneySend">송금하기</button></div></div>`;
+                <button class="moneySend">송금하기</button>
+                <button class="moneyError">총액이 이상해요</button></div></div>`;
         } else {
           var profile = `./profile/${this.name}.jpeg`;
           var xhr = new XMLHttpRequest();
@@ -250,6 +250,8 @@ function sendCalculate() {
       enterRoom(1);
     }, 100);
   });
+  calculateForm.classList.remove("popup-visible");
+  calculateForm.classList.add("popup-hide");
 }
 function EntranceRoomClose() {
   EntranceChatForm.classList.add("popup-hide");
@@ -291,8 +293,8 @@ setInterval(() => {
   }
 }, 1000);
 function sendMoneyTaxiFare() {
-  const moneyTxt = document.querySelector(".moneyDutch").innerHTML;
-  const sendMoney = Number(moneyTxt.replace("보낼금액:", ""));
+  const moneyTxt = document.querySelector(".moneyDutchMoneyTxt").innerHTML;
+  const sendMoney = Number(moneyTxt.replace("원", ""));
   const sendMoneyData = {
     makerId: document.querySelector(".chatRoom-makerId").innerHTML,
     myId: myId,
@@ -315,7 +317,19 @@ function sendMoneyTaxiFare() {
         type: "post",
         data: sendId,
       });
-      alert("송금완료했습니다.");
+      // alert("송금완료했습니다.");
+      const nickname = document.querySelector(".chatRoom-myId");
+      const chatId = document.querySelector(".chatRoom-chatId").innerHTML;
+
+      const param = {
+        name: nickname.innerHTML,
+        msg: "송금을 완료했습니다.",
+        time: new Date().toLocaleTimeString(),
+        chatId: Number(chatId),
+      };
+
+      socket.emit("chatting", param);
+      // /txt/
       setTimeout(function () {
         enterRoom(1);
       }, 100);

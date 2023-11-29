@@ -68,6 +68,10 @@
 /*********************************************/
 /******************친구 알림 CSS****************/
 /*********************************************/
+.popupBellHeader {
+  font-size: 3vh;
+  margin: 2vh 0 5vh 0;
+}
 .addChatForm-closeUp,
 .bellFriendFrom-closeUp {
   width: 100%;
@@ -103,13 +107,16 @@
 
 .bellFriend-name {
   font-size: 3vh;
-  width: 50%;
+  width: 60%;
 }
 
 .bellFriend-add__btn {
   border: none;
   background-color: transparent;
   font-size: 3vh;
+  background-color: var(--button-color);
+  padding: 1vh;
+  border-radius: 15px;
 }
 
 /*********************************************/
@@ -181,12 +188,19 @@
 }
 
 .friendManagement-friend_name {
-  font-size: 3vh;
+  font-size: 2vh;
+  width: 80%;
 }
 
 .friendManagement-deleteBtn {
   margin-top: 20px;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  border: none;
+  width: 80%;
+  background-color: transparent;
+  text-align: left;
+  padding: 0;
+  /* background-color: var(--white-blue-color); */
 }
 
 /*********************************************/
@@ -195,20 +209,19 @@
 
 #chargeMoneyBody {
   position: absolute;
-  top: 50vh;
+  top: 55vh;
   width: 100vw;
-  height: 50vh;
+  height: 45vh;
   border: none;
   background-color: #fff;
   display: flex;
   flex-direction: column;
 }
 .chargeMoneyBody-header {
-  font-size: 4vh;
-  margin: 2vh 5vw;
+  font-size: 3vh;
+  margin: 2vh 5vw 5vh 5vw;
 }
 .chargeMoney {
-  border-top: 1px solid black;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -216,11 +229,11 @@
 }
 .chargeMoney-selectMoney {
   width: 90%;
-  margin: 0.5vh;
+  margin: 0.7vh 0.5vh;
   text-align: left;
   border: none;
   background-color: transparent;
-  font-size: 3vh;
+  font-size: 2.7vh;
 }
 
 /*********************************************/
@@ -238,7 +251,7 @@
   flex-direction: column;
 }
 .sendMoneyBody-header {
-  font-size: 4vh;
+  font-size: 3vh;
   margin: 2vh 5vw;
 }
 .sendMoneyBody-inputMoney {
@@ -246,7 +259,8 @@
   -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
   appearance: none; /* 화살표 없애기 */
   font-size: 3vh;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 90%;
   margin: 0 5%;
 }
@@ -261,29 +275,37 @@
   flex-direction: row;
   width: 90%;
   margin: 10px 5%;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* border: 1px solid rgba(0, 0, 0, 0.3); */
 }
 .sendMoneyBody-allMoney {
   border: none;
-  font-size: 2vh;
+  font-size: 2.5vh;
   width: 33.3%;
+  margin: 0 5px 0 0;
+  background-color: var(--white-blue-color);
 }
 .sendMoneyBody-50000 {
   border: none;
-  font-size: 2vh;
+  font-size: 2.5vh;
   width: 33.4%;
+  margin: 0 5px;
+  background-color: var(--white-blue-color);
 }
 
 .sendMoneyBody-10000 {
   border: none;
-  font-size: 2vh;
+  font-size: 2.5vh;
   width: 33.3%;
+  margin: 0 0 0 5px;
+  background-color: var(--white-blue-color);
 }
 .sendMoneyBody-sendBtn {
   border: none;
   width: 90%;
+  height: 10%;
   margin: 0 5%;
-  font-size: 2vh;
+  font-size: 2.5vh;
+  background-color: var(--white-blue-color);
 }
 /*********************************************/
 /****************채팅방 입장 CSS*****************/
@@ -336,17 +358,35 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
+  width: 70%;
   height: 15%;
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  padding: 5%;
 }
 
 .CalculateBody-taxiFare::-webkit-outer-spin-button,
 .CalculateBody-taxiFare::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.CalculateBody-header {
+  /* position: absolute; */
+  top: 10px;
+  font-size: 3vh;
+}
+
+.CalculateBody-taxiFare {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 2vh;
+  margin-top: 20%;
+}
+.CalculateBody-calculateMoney {
+  margin-top: 20%;
+  font-size: 2vh;
+  border: none;
+  background-color: transparent;
 }

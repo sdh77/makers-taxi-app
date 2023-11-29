@@ -8,17 +8,20 @@
 }
 
 .user-container {
-  background: #a9bdce;
+  background: rgb(243, 243, 243);
+  /* background: #a9bdce; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  font-size: 2.3vh;
   /* display: none; */
 }
 
 .display-container {
   height: 100%;
-  background: #b2c7d9;
+  /* background: #b2c7d9; */
+  background: rgb(243, 243, 243);
   overflow-y: scroll;
 }
 
@@ -36,7 +39,7 @@
 }
 
 .chatOutBtn {
-  font-size: 2vh;
+  font-size: 2.5vh;
   padding: 10px;
   border: none;
   background-color: var(--white-blue-color);
@@ -46,20 +49,21 @@
   padding: 10px;
   width: 100%;
   display: flex;
-  background-color: #b2c7d9;
+  background: rgb(243, 243, 243);
+  /* background-color: #b2c7d9; */
 }
 .chatting-boardingBtn,
 .chatting-calculateBtn {
   font-size: 2vh;
   padding: 10px;
   border: none;
-  background-color: var(--white-blue-color);
+  background-color: var(--button-color);
   border-radius: 20px;
   margin-right: 10px;
 }
 
 .chatting-input {
-  font-size: 14px;
+  font-size: 2.5vh;
   height: 100%;
   width: 80vw;
   border: none;
@@ -93,7 +97,7 @@
 }
 
 .profile .user {
-  font-size: 10px;
+  font-size: 1.5vh;
   margin-bottom: 0.2rem;
 }
 
@@ -107,12 +111,12 @@
 .message {
   border-radius: 5px;
   padding: 0.5rem;
-  font-size: 12px;
+  font-size: 1.5vh;
   margin: 0 5px;
 }
 
 .time {
-  font-size: 10px;
+  font-size: 1vh;
   margin: 0 5px;
 }
 
@@ -143,6 +147,8 @@
   padding: 10px;
   font-size: 2vh;
   border-radius: 25px;
+  width: 44%;
+  text-align: center;
 }
 
 .moneyTaxi {
@@ -154,29 +160,66 @@
   margin-top: 0.5rem;
 }
 .moneyDiv {
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 10px;
   background-color: white;
+  height: 20vh;
+  position: relative;
 }
 .moneyTitle {
-  font-size: 3vh;
-  width: 100%;
+  font-size: 3.5vh;
+  width: 60vw;
   text-align: center;
-  margin: 10px 0;
+  position: absolute;
+  top: 6%;
 }
 
 .moneyTotal,
 .moneyDutch {
-  font-size: 2vh;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5vh;
   width: 100%;
-  margin: 5px 0;
+}
+.moneyTotal {
+  margin-top: 14%;
+}
+.moneyDutch {
+  margin: 10px 0;
 }
 .moneyError,
 .moneySend {
   border: none;
-  background-color: red;
+  background-color: var(--button-color);
   font-size: 2vh;
+  box-sizing: border-box;
+}
+.moneyError {
+  width: 60vw;
+}
+.moneyBtns {
+  display: flex;
+  flex-direction: column;
+}
+.moneyBtns {
+}
+
+.moneyError {
+  position: absolute;
+  bottom: 10px;
+}
+.sent .profile {
+  display: none;
+}
+.received {
+  position: relative;
+}
+.received .user {
+  position: absolute;
+  left: 14vw;
+  top: 7px;
+  width: 10vw;
 }

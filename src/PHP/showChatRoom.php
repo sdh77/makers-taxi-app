@@ -46,12 +46,12 @@ if ($chatDatas) {
                 echo '
                 <li class="moneyTaxi">
                 <div class="moneyDiv">
-                <div class="moneyTitle">정산해주세요</div>
-                <div class="moneyTotal">결재금액:' . $moneyData[0] . ' </div>
-                <div class="moneyDutch">보낼금액:' . $moneyData[1] . '</div>
+                <div class="moneyTitle">정산해요 😆</div>
+                <div class="moneyTotal"><p>택시비</p><p>' . $moneyData[0] . '원</p></div>
+                <div class="moneyDutch"><p>송금액</p><p class="moneyDutchMoneyTxt">' . $moneyData[1] . '원</p></div>
                 <div class="moneyBtns">
-                <button class="moneyError">총액이 이상해요</button>
-                <button class="moneySend">송금하기</button></div></div>
+                <button class="moneySend">송금하기</button>
+                <button class="moneyError">택시비가 이상해요</button></div></div>
                 </li>';
               } else {
                 if ($_SESSION['id'] == $messageData['id']) {
@@ -123,3 +123,4 @@ if ($chatDatas) {
 }
 
 ?>
+<!-- ㅂㅈㄷ -->
