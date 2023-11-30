@@ -203,17 +203,17 @@ function mouseEnd(evt) {
   var result = Date.now() - pcLong;
   if (Number(result) > 400) {
     //롱 터치 발생
-    // alert("LongTouch");
+    console.dir(evt.target);
     let friendNickName;
     if (evt.target.classList[0] == "nickName") {
       friendNickName = evt.target.innerHTML;
-    } else if (evt.target.classList[0] == "profile__column") {
+    } else if (evt.target.classList[0] == "friendsProfile") {
       friendNickName = evt.target.querySelector(".nickName").innerHTML;
     } else if (evt.target.tagName == "IMG") {
       friendNickName =
         evt.target.parentElement.querySelector(".nickName").innerHTML;
     }
-
+    console.log(friendNickName);
     const friendNickNameArea = document.querySelector(
       ".friendManagement-friend_name"
     );
@@ -252,7 +252,7 @@ function touchEnd(evt) {
     let friendNickName;
     if (evt.target.classList[0] == "nickName") {
       friendNickName = evt.target.innerHTML;
-    } else if (evt.target.classList[0] == "profile__column") {
+    } else if (evt.target.classList[0] == "friendsProfile") {
       friendNickName = evt.target.querySelector(".nickName").innerHTML;
     } else if (evt.target.tagName == "IMG") {
       friendNickName =

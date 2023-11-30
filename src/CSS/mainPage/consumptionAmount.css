@@ -14,14 +14,14 @@
 .consumptionAmount-make {
   width: 50%;
   text-align: center;
-  font-size: 3vh;
+  font-size: 2.5vh;
   background-color: transparent;
   border: none;
-  border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding: 10px 0;
 }
 
 .consumptionAmount-click {
-  background-color: var(--button-color-click);
+  border-bottom: 4px solid var(--button-color-click);
+  color: var(--button-color-click);
 }

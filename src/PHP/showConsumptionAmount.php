@@ -12,7 +12,7 @@ echo '  <div class="consumptionAmount">
             <button class="consumptionAmount-make consumptionAmount-click">만든 방</button>
             <button class="consumptionAmount-enter">들어간 방</button>
           </div>
-          <div>이용 내역</div>
+          <div></div>
         <div>';
 echo '</div>';
 pg_close($conn);
