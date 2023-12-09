@@ -17,6 +17,7 @@ if ($likeChatLists) {
 echo '<div class="main-top">
         <p>Chat</p>
         <div class="functionBtn">
+          <button class="functionBtn_enterFirstRoom"><i class="fa-solid fa-bolt"></i></button>
           <button class="functionBtn_reload"><i class="fa-solid fa-rotate"></i></button>
           <button class="functionBtn_plus"><i class="fa-solid fa-plus"></i></button>
         </div>

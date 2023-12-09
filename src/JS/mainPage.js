@@ -136,8 +136,10 @@ function updateChatList() {
     }, 1000);
     plusBtn = document.querySelector(".functionBtn_plus");
     reloadBtn = document.querySelector(".functionBtn_reload");
+    enterFirstRoomBtn = document.querySelector(".functionBtn_enterFirstRoom");
     plusBtn.addEventListener("click", chatPlus);
     reloadBtn.addEventListener("click", updateChatList);
+    enterFirstRoomBtn.addEventListener("click", enterFirstRoom);
     deleteLikeBtns = document.querySelectorAll(".chatList-deleteLikeBtn");
     LikeBtns = document.querySelectorAll(".chatList-LikeBtn");
     EntranceBtns = document.querySelectorAll(".chatList-Entrance");
@@ -329,6 +331,18 @@ function showConsumptionAmount() {
       ".consumptionAmount-closeBtn"
     );
     consumptionAmountCloseBtn.addEventListener("click", showSetting);
+  });
+}
+function enterFirstRoom() {
+  $.ajax({ url: "PHP/findFirstRoom.php", type: "post" }).done(function (data) {
+    const chatIds = document.querySelectorAll(".chatList-chatid");
+    chatIds.forEach(function (chatId) {
+      if (chatId.innerHTML == data) {
+        chatId.parentElement.parentElement.parentElement
+          .querySelector(".chatList-Entrance")
+          .click();
+      }
+    });
   });
 }
 friends.addEventListener("click", showFriends);

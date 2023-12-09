@@ -19,5 +19,7 @@ if ($chatDatas) {
     }
   }
 }
+pg_close($conn);
+
 
 ?>
