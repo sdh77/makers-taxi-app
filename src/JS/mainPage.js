@@ -334,15 +334,20 @@ function showConsumptionAmount() {
   });
 }
 function enterFirstRoom() {
+  updateChatList();
   $.ajax({ url: "PHP/findFirstRoom.php", type: "post" }).done(function (data) {
-    const chatIds = document.querySelectorAll(".chatList-chatid");
-    chatIds.forEach(function (chatId) {
-      if (chatId.innerHTML == data) {
-        chatId.parentElement.parentElement.parentElement
-          .querySelector(".chatList-Entrance")
-          .click();
-      }
-    });
+    if (data == "noChat") {
+      alert("대화방이 없습니다. 새로 만들어주세요!");
+    } else {
+      const chatIds = document.querySelectorAll(".chatList-chatid");
+      chatIds.forEach(function (chatId) {
+        if (chatId.innerHTML == data) {
+          chatId.parentElement.parentElement.parentElement
+            .querySelector(".chatList-Entrance")
+            .click();
+        }
+      });
+    }
   });
 }
 friends.addEventListener("click", showFriends);
