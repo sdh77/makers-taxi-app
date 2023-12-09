@@ -22,7 +22,7 @@ echo '<div class="main-top">
         </div>
       </div>';
 echo '<div class="main-middle">';
-$chatListSql = "select * from chatlist  order by state, endtime ,chatid";
+$chatListSql = "select * from chatlist where state = false order by endtime ,chatid";
 $chatLists = pg_query($conn, $chatListSql);
 if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {
