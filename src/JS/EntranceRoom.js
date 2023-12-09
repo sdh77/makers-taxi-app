@@ -64,6 +64,7 @@ function enterRoom(makeState) {
     const chatExitBtnError = document.querySelector(".chatting-outBtnError");
     const calculateBtn = document.querySelector(".chatting-calculateBtn");
     const boardingBtn = document.querySelector(".chatting-boardingBtn");
+    const deleteChatBtn = document.querySelector(".chatting-deleteChatBtn");
     if (chatExitBtn) chatExitBtn.addEventListener("click", ExitChat);
     else if (chatExitBtnError)
       chatExitBtnError.addEventListener("click", ExitChatError);
@@ -71,7 +72,7 @@ function enterRoom(makeState) {
       calculateBtn.addEventListener("click", showCalculatePopup);
     if (boardingBtn) boardingBtn.addEventListener("click", saveUser);
     ("use strict");
-
+    if (deleteChatBtn) deleteChatBtn.addEventListener("click", deleteChatRoom);
     // socket.emit("enterRoom", chatId);
     updateSocket(chatId);
 
@@ -333,6 +334,23 @@ function sendMoneyTaxiFare() {
       setTimeout(function () {
         enterRoom(1);
       }, 100);
+    }
+  });
+}
+function deleteChatRoom() {
+  console.log("asd");
+  const chatId = {
+    deleteId: document.querySelector(".chatRoom-chatId").innerHTML,
+  };
+  $.ajax({
+    url: "PHP/deleteChatRoom.php",
+    type: "post",
+    data: chatId,
+  }).done(function (data) {
+    if (data == "No") {
+      alert("참여자가 아직 대화방에 있습니다.");
+    } else {
+      ExitChat();
     }
   });
 }

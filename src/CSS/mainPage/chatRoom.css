@@ -53,13 +53,18 @@
   /* background-color: #b2c7d9; */
 }
 .chatting-boardingBtn,
-.chatting-calculateBtn {
+.chatting-calculateBtn,
+.chatting-deleteChatBtn {
   font-size: 2vh;
   padding: 10px;
   border: none;
   background-color: var(--button-color);
   border-radius: 20px;
   margin-right: 10px;
+}
+.chatting-deleteChatBtn {
+  position: absolute;
+  right: 0px;
 }
 
 .chatting-input {

@@ -26,10 +26,13 @@ if ($chatDatas) {
         if ($noShowDatas) {
           if (pg_num_rows($noShowDatas) > 0) {
             while ($noShowData = pg_fetch_array($noShowDatas)) {
-              if ($noShowData['settlement'] == 0)
-                echo '<button class="chatOutBtn chatting-outBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
-              else
-                echo '<button class="chatOutBtn chatting-outBtnError"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
+              if ($chatData['maker'] == $_SESSION['id']) {
+              } else {
+                if ($noShowData['settlement'] == 0)
+                  echo '<button class="chatOutBtn chatting-outBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
+                else
+                  echo '<button class="chatOutBtn chatting-outBtnError"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>';
+              }
             }
           }
         }
@@ -94,6 +97,7 @@ if ($chatDatas) {
           <div class="chatting-btns">
           <button class="chatting-boardingBtn">탑승 완료</button>
           <button class="chatting-calculateBtn">정산</button>
+          <button class="chatting-deleteChatBtn">채팅방 지우기</button>
           </div>
           <div class="input-container">
             <span>
@@ -116,11 +120,11 @@ if ($chatDatas) {
         ';
         }
       } else {
-        echo "채팅방이 가득 입니ㅏㄷ.";
+        echo "채팅방이 가득 입니다.";
       }
     }
   }
 }
+pg_close($conn);
 
 ?>
-<!-- ㅂㅈㄷ -->
