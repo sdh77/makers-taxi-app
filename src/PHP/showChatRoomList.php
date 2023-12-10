@@ -2,6 +2,7 @@
 session_start();
 $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz password=taxi')
   or die('Could not connect: ' . pg_last_error());
+$selectValue = $_POST['selectValue_chatPage'];
 $myLikeChatLists = [];
 $likeChatSql = "select * from likechat where userid = '" . $_SESSION['id'] . "'";
 $likeChatLists = pg_query($conn, $likeChatSql);
@@ -15,7 +16,32 @@ if ($likeChatLists) {
 }
 
 echo '<div class="main-top">
-        <p>Chat</p>
+        <div class="chatList-header">
+          <p>Chat</p>
+          <select class="chatList-goalArea" onchange="selectChatPage()">';
+if ($selectValue == "전체")
+  echo '<option value="전체">전체</option>
+            <option value="대신관">대신관</option>
+            <option value="수리관">수리관</option>
+            <option value="운동장">운동장</option>';
+else if ($selectValue == "대신관")
+  echo '<option value="전체">전체</option>
+            <option value="대신관" selected>대신관</option>
+            <option value="수리관">수리관</option>
+            <option value="운동장">운동장</option>';
+else if ($selectValue == "수리관")
+  echo '<option value="전체">전체</option>
+            <option value="대신관">대신관</option>
+            <option value="수리관" selected>수리관</option>
+            <option value="운동장">운동장</option>';
+else if ($selectValue == "운동장")
+  echo '<option value="전체">전체</option>
+            <option value="대신관">대신관</option>
+            <option value="수리관">수리관</option>
+            <option value="운동장" selected>운동장</option>';
+
+echo '</select>
+        </div>
         <div class="functionBtn">
           <button class="functionBtn_enterFirstRoom"><i class="fa-solid fa-bolt"></i></button>
           <button class="functionBtn_reload"><i class="fa-solid fa-rotate"></i></button>
@@ -23,7 +49,11 @@ echo '<div class="main-top">
         </div>
       </div>';
 echo '<div class="main-middle">';
-$chatListSql = "select * from chatlist where state = false order by endtime ,chatid";
+if ($selectValue == "전체") {
+  $chatListSql = "select * from chatlist where state = false order by endtime ,chatid";
+} else {
+  $chatListSql = "select * from chatlist where state = false and goalarea = '" . $selectValue . "' order by endtime ,chatid";
+}
 $chatLists = pg_query($conn, $chatListSql);
 if ($chatLists) {
   if (pg_num_rows($chatLists) > 0) {

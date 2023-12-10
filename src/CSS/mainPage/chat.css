@@ -1,3 +1,20 @@
+.chatList-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.chatList-header .chatList-goalArea {
+  border: 1px solid black;
+  border-radius: 15px;
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
+  font-size: 2vh;
+  padding: 5px 10px;
+  margin-left: 10px;
+  text-align: center;
+  text-align-last: center;
+}
 .Btn-chatList {
   height: 8%;
   border: none;

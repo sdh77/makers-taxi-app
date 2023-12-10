@@ -124,9 +124,22 @@ function updateFriendList() {
   });
 }
 function updateChatList() {
-  $.ajax({ url: "PHP/showChatRoomList.php", type: "post" }).done(function (
-    data
-  ) {
+  const selectList = document.querySelector(".chatList-goalArea");
+  let selectValue;
+  if (selectList) {
+    selectValue = {
+      selectValue_chatPage: selectList.value,
+    };
+  } else {
+    selectValue = {
+      selectValue_chatPage: "전체",
+    };
+  }
+  $.ajax({
+    url: "PHP/showChatRoomList.php",
+    type: "post",
+    data: selectValue,
+  }).done(function (data) {
     main_topMiddle.innerHTML = data;
     const reloadEmoji = document.querySelector(".fa-rotate");
     reloadEmoji.classList.add("fa-spin");
@@ -349,6 +362,16 @@ function enterFirstRoom() {
       });
     }
   });
+}
+function sendMoneyToFriend(event) {
+  console.log(event.target.parentElement.querySelector(".nickName"));
+}
+
+function selectChatPage() {
+  const selectValue_chatPage =
+    document.querySelector(".chatList-goalArea").value;
+  console.log(selectValue_chatPage);
+  updateChatList();
 }
 friends.addEventListener("click", showFriends);
 chatRoom.addEventListener("click", showChatRoom);
