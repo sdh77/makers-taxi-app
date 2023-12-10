@@ -13,11 +13,11 @@ if ($useInfos) {
   if (pg_num_rows($useInfos) > 0) {
     while ($useInfo = pg_fetch_assoc($useInfos)) {
       echo '<div class="useInfo">
-              <div class="useinfo-date">날짜: ' . substr($useInfo['date'], 0, 16) . '</div>
-              <div class="useinfo-startarea">출발지: ' . $useInfo['startarea'] . '</div>
-              <div class="useinfo-goalarea">도착지: ' . $useInfo['goalarea'] . '</div>
-              <div class="useinfo-passengerNum">인원수: ' . $useInfo['passengersnumber'] . '</div>
-              <div class="useinfo-price">가격: ' . $useInfo['price'] . '</div>
+              <div class="useinfo-date">날짜 : ' . substr($useInfo['date'], 0, 16) . '</div>
+              <div class="useinfo-startarea">출발 : ' . $useInfo['startarea'] . '</div>
+              <div class="useinfo-goalarea">도착 : ' . $useInfo['goalarea'] . '</div>
+              <div class="useinfo-passengerNum">인원 : ' . $useInfo['passengersnumber'] . '명</div>
+              <div class="useinfo-price">가격 : ' . $useInfo['price'] . '원</div>
             </div>';
     }
   }

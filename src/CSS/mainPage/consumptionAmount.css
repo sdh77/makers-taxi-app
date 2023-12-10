@@ -4,12 +4,14 @@
   font-size: 3vh;
   margin-right: 10px;
 }
+
 .consumptionAmount-select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100vw;
 }
+
 .consumptionAmount-enter,
 .consumptionAmount-make {
   width: 50%;
@@ -25,15 +27,30 @@
   border-bottom: 4px solid var(--button-color-click);
   color: var(--button-color-click);
 }
+
 .consumptionAmount-data {
   width: 100%;
+  height: 80vh;
+  background-color: rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .useInfo {
-  border: 1px solid black;
-  width: 90%;
-  height: 10%;
+  background-color: white;
+  /* border: 1px solid rgba(0, 0, 0, 0.3); */
+  width: 95%;
+  height: 16vh;
+  box-sizing: border-box;
   margin: 10px 0;
+  padding: 10px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.useInfo * {
+  padding: 4px 0px;
+  color: rgba(0, 0, 0, 0.8);
 }
