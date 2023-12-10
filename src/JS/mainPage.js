@@ -361,7 +361,9 @@ function showConsumptionAmount() {
       showUseInfo("enter");
     });
   });
-  showUseInfo("maker");
+  setTimeout(function () {
+    showUseInfo("maker");
+  }, 100);
 }
 function enterFirstRoom() {
   updateChatList();
