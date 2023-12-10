@@ -25,3 +25,15 @@
   border-bottom: 4px solid var(--button-color-click);
   color: var(--button-color-click);
 }
+.consumptionAmount-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.useInfo {
+  border: 1px solid black;
+  width: 90%;
+  height: 10%;
+  margin: 10px 0;
+}

@@ -296,10 +296,12 @@ setInterval(() => {
 function sendMoneyTaxiFare() {
   const moneyTxt = document.querySelector(".moneyDutchMoneyTxt").innerHTML;
   const sendMoney = Number(moneyTxt.replace("원", ""));
+  const chatId = Number(document.querySelector(".chatRoom-chatId").innerHTML);
   const sendMoneyData = {
     makerId: document.querySelector(".chatRoom-makerId").innerHTML,
     myId: myId,
     sendMoney: sendMoney,
+    chatId: chatId,
   };
   $.ajax({
     url: "PHP/sendMoneyTaxiFare.php",

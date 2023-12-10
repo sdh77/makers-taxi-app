@@ -343,8 +343,25 @@ function showConsumptionAmount() {
     const consumptionAmountCloseBtn = document.querySelector(
       ".consumptionAmount-closeBtn"
     );
+    const consumptionAmountMake = document.querySelector(
+      ".consumptionAmount-make"
+    );
+    const consumptionAmountEnter = document.querySelector(
+      ".consumptionAmount-enter"
+    );
     consumptionAmountCloseBtn.addEventListener("click", showSetting);
+    consumptionAmountMake.addEventListener("click", function () {
+      consumptionAmountMake.classList.add("consumptionAmount-click");
+      consumptionAmountEnter.classList.remove("consumptionAmount-click");
+      showUseInfo("maker");
+    });
+    consumptionAmountEnter.addEventListener("click", function () {
+      consumptionAmountEnter.classList.add("consumptionAmount-click");
+      consumptionAmountMake.classList.remove("consumptionAmount-click");
+      showUseInfo("enter");
+    });
   });
+  showUseInfo("maker");
 }
 function enterFirstRoom() {
   updateChatList();
@@ -372,6 +389,21 @@ function selectChatPage() {
     document.querySelector(".chatList-goalArea").value;
   console.log(selectValue_chatPage);
   updateChatList();
+}
+function showUseInfo(select) {
+  const consumptionAmountText = document.querySelector(
+    ".consumptionAmount-data"
+  );
+  const value = {
+    select: select,
+  };
+  $.ajax({
+    url: "PHP/showUseInfo.php",
+    type: "post",
+    data: value,
+  }).done(function (data) {
+    consumptionAmountText.innerHTML = data;
+  });
 }
 friends.addEventListener("click", showFriends);
 chatRoom.addEventListener("click", showChatRoom);

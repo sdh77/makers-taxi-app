@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz password=taxi')
   or die('Could not connect: ' . pg_last_error());
 
@@ -12,7 +13,7 @@ echo '  <div class="consumptionAmount">
             <button class="consumptionAmount-make consumptionAmount-click">만든 방</button>
             <button class="consumptionAmount-enter">들어간 방</button>
           </div>
-          <div></div>
+          <div class="consumptionAmount-data"></div>
         <div>';
 echo '</div>';
 pg_close($conn);

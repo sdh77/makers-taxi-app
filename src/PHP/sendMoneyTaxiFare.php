@@ -4,11 +4,13 @@ $conn = pg_connect('host=localhost port=5432 dbname=tanyang user=sanggeukz passw
 $makerId = $_POST['makerId'];
 $myId = $_POST['myId'];
 $sendMoney = $_POST['sendMoney'];
-
+$chatId = $_POST['chatId'];
 $searchIdSql = "select * from user_money where id = '" . $myId . "'";
 $searchMakerSql = "select * from user_money where id = '" . $makerId . "'";
+$searchChatSql = "select * from chatlist where chatid = " . $chatId;
 $idList = pg_query($conn, $searchIdSql);
 $makerList = pg_query($conn, $searchMakerSql);
+$chatList = pg_query($conn, $searchChatSql);
 $do = 0;
 if ($idList) {
   if (pg_num_rows($idList) > 0) {
@@ -37,6 +39,16 @@ if ($do == 1) {
       echo "complete";
     }
   }
+  if ($chatList) {
+    if (pg_num_rows($chatList) > 0) {
+      while ($chatData = pg_fetch_assoc($chatList)) {
+        $useInfoSql = "insert into usetaxiinfo(id,startarea,goalarea,passengersnumber,price,date)
+        values('" . $myId . "','" . $chatData['startarea'] . "','" . $chatData['goalarea'] . "'," . $chatData['membernum'] . "," . $sendMoney . ",now())";
+        pg_query($conn, $useInfoSql);
+      }
+    }
+  }
+
 }
 
 pg_close($conn);

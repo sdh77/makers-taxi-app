@@ -33,20 +33,23 @@ if ($searchChats) {
 $user = array_values($user);
 if (count($user) == 1) {
   $updateEntrantSql = "UPDATE chatlist
-  SET entrant1 = '" . $user[0] . "'
+  SET entrant1 = '" . $user[0] . "',
+      membernum = 2
   WHERE chatid = " . $chatId;
   $searchChats = pg_query($conn, $updateEntrantSql);
 } else if (count($user) == 2) {
   $updateEntrantSql = "UPDATE chatlist
   SET entrant1 = '" . $user[0] . "',
-      entrant2 = '" . $user[1] . "'
+      entrant2 = '" . $user[1] . "',
+      membernum = 3
   WHERE chatid = " . $chatId;
   $searchChats = pg_query($conn, $updateEntrantSql);
 } else if (count($user) == 3) {
   $updateEntrantSql = "UPDATE chatlist
   SET entrant1 = '" . $user[0] . "',
       entrant2 = '" . $user[1] . "',
-      entrant3 = '" . $user[2] . "'
+      entrant3 = '" . $user[2] . "',
+      membernum = 4
   WHERE chatid = " . $chatId;
   $searchChats = pg_query($conn, $updateEntrantSql);
 }
